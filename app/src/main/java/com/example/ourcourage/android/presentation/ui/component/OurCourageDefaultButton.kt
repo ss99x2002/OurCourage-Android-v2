@@ -14,6 +14,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.ourcourage.android.ui.theme.ButtonBlue
+import com.example.ourcourage.android.ui.theme.ButtonGrey
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 
 @Composable
@@ -29,10 +31,10 @@ fun OurCourageDefaultButtonComponent(
         enabled = isEnabled,
         colors =
             ButtonColors(
-                containerColor = Color.Blue,
-                contentColor = Color.White,
-                disabledContainerColor = Color.Gray,
-                disabledContentColor = Color.White,
+                containerColor = Color(ButtonBlue.value),
+                contentColor = Color.Black,
+                disabledContainerColor = Color(ButtonGrey.value),
+                disabledContentColor = Color.Black,
             ),
         elevation =
             ButtonDefaults.elevatedButtonElevation(
@@ -65,16 +67,6 @@ fun OurCourageEnrollButtonPreView() {
                     .wrapContentSize()
                     .padding(20.dp),
             isEnabled = true,
-            text = "등록하기",
-            onClick = { onButtonClick() },
-        )
-
-        OurCourageDefaultButtonComponent(
-            modifier =
-                Modifier
-                    .wrapContentSize()
-                    .padding(20.dp),
-            isEnabled = false,
             text = "등록하기",
             onClick = { onButtonClick() },
         )
