@@ -175,6 +175,8 @@ fun HomeMultiUseList(
                         .height(380.dp),
                 verticalArrangement = Arrangement.spacedBy(4.dp),
             ) {
+                // list 순회하면서 multiUseItem 가져온다.
+                // items import에 따라 사용 다름
                 items(list) { multiUseItem ->
                     HomeMultiUseItem(
                         multiUse = multiUseItem,
