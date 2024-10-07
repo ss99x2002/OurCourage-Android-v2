@@ -25,6 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -168,23 +169,38 @@ fun HomeMultiUseList(
                 textWeight = FontWeight.Bold,
             )
 
-            LazyColumn(
+            Box(
                 modifier =
                     Modifier
-                        .padding(12.dp)
-                        .height(380.dp),
-                verticalArrangement = Arrangement.spacedBy(4.dp),
+                        .height(500.dp),
             ) {
-                // list 순회하면서 multiUseItem 가져온다.
-                // items import에 따라 사용 다름
-                items(list) { multiUseItem ->
-                    HomeMultiUseItem(
-                        multiUse = multiUseItem,
-                        modifier =
-                            Modifier
-                                .fillMaxWidth()
-                                .padding(vertical = 4.dp),
-                    )
+                Image(
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .align(Alignment.BottomEnd),
+                    painter = painterResource(R.drawable.img_home_tree_background),
+                    contentDescription = "backgroundTreeImage",
+                    contentScale = ContentScale.Crop,
+                )
+                LazyColumn(
+                    modifier =
+                        Modifier
+                            .padding(horizontal = 12.dp, vertical = 4.dp)
+                            .height(400.dp),
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
+                ) {
+                    // list 순회하면서 multiUseItem 가져온다.
+                    // items import에 따라 사용 다름
+                    items(list) { multiUseItem ->
+                        HomeMultiUseItem(
+                            multiUse = multiUseItem,
+                            modifier =
+                                Modifier
+                                    .fillMaxWidth()
+                                    .padding(vertical = 4.dp),
+                        )
+                    }
                 }
             }
         }
