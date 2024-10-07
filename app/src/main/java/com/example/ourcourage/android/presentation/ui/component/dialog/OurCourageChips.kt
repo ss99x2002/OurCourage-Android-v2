@@ -21,9 +21,9 @@ fun OurCourageChips(
     ) {
         elements.forEachIndexed { idx, chipState ->
             OurCourageChipComponent(
-                selected = elements[idx].isSelected.value,
-                onClick = { onChipClick },
-                text = elements[idx].text,
+                selected = chipState.isSelected.value,
+                onClick = { onChipClick(chipState.text, !chipState.isSelected.value, idx) },
+                text = chipState.text,
                 modifier =
                     Modifier
                         .weight(1f)
