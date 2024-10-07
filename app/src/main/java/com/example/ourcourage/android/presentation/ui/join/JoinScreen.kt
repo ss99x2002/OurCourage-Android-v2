@@ -101,14 +101,14 @@ fun NickNameLayout(modifier: Modifier = Modifier) {
         OurCourageTextField(
             hint = "사용 할 닉네임을 입력해주세요.",
             errorDescription = "해당 닉네임은 사용 할 수 없습니다.",
-            isError = false,
+            isError = true,
             onClick = {},
             onValueChange = {},
             value = "닉네임을 입력하세요.",
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 24.dp),
+                    .padding(vertical = 12.dp),
             height = 100,
         )
     }
