@@ -9,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.ourcourage.android.ui.theme.ChipBlue
@@ -19,8 +20,8 @@ import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 fun OurCourageChipComponent(
     modifier: Modifier = Modifier,
     selected: Boolean,
-    selectedColor: Color,
-    unselectedColor: Color,
+    selectedColor: Color = Color(ChipBlue.value),
+    unselectedColor: Color = Color(ChipWhite.value),
     text: String = "",
     onClick: () -> Unit,
 ) {
@@ -32,17 +33,22 @@ fun OurCourageChipComponent(
             },
         shape = RoundedCornerShape(100.dp),
         modifier =
-            modifier.border(
-                width = 1.dp,
-                shape = RoundedCornerShape(100.dp),
-                color =
-                    Color(
-                        ChipBlue.value,
-                    ),
-            ),
+            modifier
+                .border(
+                    width = 1.dp,
+                    shape = RoundedCornerShape(100.dp),
+                    color =
+                        Color(
+                            ChipBlue.value,
+                        ),
+                ),
     ) {
         Text(
-            modifier = Modifier.padding(horizontal = 32.dp, vertical = 6.dp),
+            modifier =
+                Modifier
+                    .padding(horizontal = 36.dp, vertical = 8.dp)
+                    .wrapContentSize(),
+            textAlign = TextAlign.Center,
             text = text,
         )
     }
