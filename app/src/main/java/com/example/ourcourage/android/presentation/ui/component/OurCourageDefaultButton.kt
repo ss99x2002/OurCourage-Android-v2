@@ -23,6 +23,7 @@ fun OurCourageDefaultButtonComponent(
     modifier: Modifier = Modifier,
     isEnabled: Boolean = false,
     text: String = "",
+    fontSize: Int = 16,
     onClick: () -> Unit,
 ) {
     Button(
@@ -47,7 +48,7 @@ fun OurCourageDefaultButtonComponent(
             text = text,
             style =
                 TextStyle(
-                    fontSize = 16.sp,
+                    fontSize = fontSize.sp,
                     fontWeight = FontWeight.Bold,
                 ),
         )
