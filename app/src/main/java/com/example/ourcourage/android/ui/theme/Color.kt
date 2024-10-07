@@ -18,3 +18,8 @@ val ButtonGreyStroke = Color(0xFFF0EBE8)
 
 val ChipBlue = Color(0xFF7EC1FE)
 val ChipWhite = Color(0xFFFAFDFF)
+
+val PrimaryBlue = Color(0xFF3DA9FC)
+val BackgroundBlue = Color(0xFFFAFDFF)
+
+val StrokeGrey = Color(0xFFDADADA)
