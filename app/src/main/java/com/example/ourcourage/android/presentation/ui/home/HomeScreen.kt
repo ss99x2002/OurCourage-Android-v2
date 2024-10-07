@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -172,7 +173,7 @@ fun HomeMultiUseList(
             Box(
                 modifier =
                     Modifier
-                        .height(500.dp),
+                        .wrapContentHeight(),
             ) {
                 Image(
                     modifier =
@@ -186,7 +187,7 @@ fun HomeMultiUseList(
                 LazyColumn(
                     modifier =
                         Modifier
-                            .padding(horizontal = 12.dp, vertical = 4.dp)
+                            .padding(start = 12.dp, end = 12.dp, top = 10.dp, bottom = 120.dp)
                             .height(400.dp),
                     verticalArrangement = Arrangement.spacedBy(4.dp),
                 ) {
