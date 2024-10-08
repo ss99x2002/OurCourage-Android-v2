@@ -43,7 +43,7 @@ fun JoinScreen() {
             modifier =
                 Modifier
                     .align(Alignment.BottomEnd)
-                    .padding(vertical = 16.dp)
+                    .padding(top = 16.dp, bottom = 16.dp, end = 0.dp, start = 32.dp)
                     .fillMaxWidth()
                     .wrapContentHeight(),
             painter = painterResource(R.drawable.img_join_book_background),
