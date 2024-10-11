@@ -26,8 +26,11 @@ import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 @Composable
 fun MultiUseReturnScreen(
     modifier: Modifier,
+    multiUse: MultiUse,
+    onClickReturn: () -> Unit,
 ) {
     Box(modifier = modifier.verticalScroll(rememberScrollState())) {
+        // 배경 이미지 (가장 뒤쪽 재활용 이미지)
         Image(
             painter = painterResource(R.drawable.ic_multiuse_rental_recycler_background),
             contentDescription = "multiUseRentalBackgroundBottomIcon",
@@ -38,7 +41,9 @@ fun MultiUseReturnScreen(
                     .padding(top = 250.dp),
             contentScale = ContentScale.Crop,
         )
+        // 주요 콘텐츠 (상단 레이어)
         Column(modifier = Modifier.padding(bottom = 24.dp)) {
+            // 상단 이미지
             Image(
                 contentDescription = "multiUseRentalTopBackgroundImage",
                 modifier =
@@ -52,12 +57,14 @@ fun MultiUseReturnScreen(
                     ),
             )
 
+            // 다회용기 이용 조회
             MultiUseDetailLayout(
                 modifier = Modifier.padding(start = 24.dp, end = 24.dp, top = 42.dp),
                 title = "다회용기 이용 조회",
-                multiUse = MultiUse(multiUseContainerId = 1, locationName = "블루포트 인하대점", useAt = "2024-10-10 10:45:21", status = "대여중", userId = 1, locationImageUrl = R.drawable.img_tumbler),
+                multiUse = multiUse,
             )
 
+            // 반납 장소 정보
             MultiUseReturnLocationMapLayout(
                 modifier =
                     Modifier
@@ -67,6 +74,7 @@ fun MultiUseReturnScreen(
                 titleIconRes = R.drawable.ic_location_pin,
             )
 
+            // 반납 버튼
             Box(
                 modifier =
                     Modifier
@@ -81,11 +89,12 @@ fun MultiUseReturnScreen(
                             .padding(horizontal = 24.dp),
                     isEnabled = true,
                     text = "다회용기 반납하기",
-                    onClick = { onClickReturnButton() },
+                    onClick = { onClickReturn() },
                 )
             }
         }
 
+        // 배경 이미지 (상단 지구본 이미지)
         Image(
             painter = painterResource(R.drawable.ic_multiuse_rental_hands_earth_background),
             contentDescription = "multiUseRentalBackgroundTopIcon",
@@ -99,15 +108,14 @@ fun MultiUseReturnScreen(
     }
 }
 
-fun onClickReturnButton() {
-}
-
 @Preview(showBackground = true)
 @Composable
 fun MultiUseReturnScreenPreview() {
     OurCourageAndroidv2Theme {
         MultiUseReturnScreen(
             modifier = Modifier.fillMaxSize(),
+            multiUse = MultiUse(multiUseContainerId = 1, locationName = "블루포트 인하대점", useAt = "2024-10-10 10:45:21", status = "대여중", userId = 1, locationImageUrl = R.drawable.img_tumbler),
+            onClickReturn = { },
         )
     }
 }
