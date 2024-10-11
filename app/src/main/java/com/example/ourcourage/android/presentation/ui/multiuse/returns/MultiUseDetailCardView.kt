@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ourcourage.android.R
 import com.example.ourcourage.android.domain.MultiUse
+import com.example.ourcourage.android.presentation.ui.multiuse.returns.type.MultiUseDetailCardType
 import com.example.ourcourage.android.ui.theme.ButtonBlue
 import com.example.ourcourage.android.ui.theme.PrimaryBlue
 
