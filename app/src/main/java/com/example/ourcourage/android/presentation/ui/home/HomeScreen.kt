@@ -266,7 +266,7 @@ fun HomeMultiUseItem(
                             Color(StrokeGrey.value),
                             shape = RoundedCornerShape(10.dp),
                         ),
-                painter = painterResource(id = multiUse.multiUseImage),
+                painter = painterResource(id = multiUse.locationImageUrl),
                 contentDescription = "multiUseImage",
             )
             Column(
