@@ -23,3 +23,4 @@ val PrimaryBlue = Color(0xFF3DA9FC)
 val BackgroundBlue = Color(0xFFFAFDFF)
 
 val StrokeGrey = Color(0xFFDADADA)
+val StrokeBlue = Color(0XFFE9F1FF)
