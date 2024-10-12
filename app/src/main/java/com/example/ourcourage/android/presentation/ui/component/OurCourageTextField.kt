@@ -5,6 +5,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -42,30 +43,31 @@ fun OurCourageTextField(
                 text = errorDescription,
                 color = Color.Red,
                 modifier =
-                    Modifier
-                        .padding(start = 12.dp, top = 8.dp, bottom = 8.dp),
+                Modifier
+                    .padding(start = 12.dp, bottom = 8.dp),
             )
         }
         BasicTextField(
             modifier =
-                Modifier
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(Color.White)
-                    .wrapContentHeight()
-                    .fillMaxWidth(),
+            Modifier
+                .clip(RoundedCornerShape(10.dp))
+                .background(Color.White)
+                .wrapContentHeight()
+                .fillMaxWidth()
+                .height(height.dp),
             value = value,
             onValueChange = onValueChange,
             textStyle = textStyle,
             decorationBox = { innerTextField ->
                 Box(
                     modifier =
-                        Modifier
-                            .border(
-                                2.dp,
-                                if (isError) Color.Red else Color(PrimaryBlue.value),
-                                shape = RoundedCornerShape(10.dp),
-                            )
-                            .padding(24.dp),
+                    Modifier
+                        .border(
+                            2.dp,
+                            if (isError) Color.Red else Color(PrimaryBlue.value),
+                            shape = RoundedCornerShape(10.dp),
+                        )
+                        .padding(24.dp),
                 ) {
                     if (value.isEmpty()) {
                         Text(
