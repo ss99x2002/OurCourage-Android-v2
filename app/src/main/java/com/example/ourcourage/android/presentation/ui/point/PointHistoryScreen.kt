@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import com.example.ourcourage.android.MultiUseList
 import com.example.ourcourage.android.R
 import com.example.ourcourage.android.domain.MultiUse
+import com.example.ourcourage.android.presentation.ui.component.OurCourageTextTopBar
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 
 @Composable
@@ -36,11 +37,9 @@ fun PointHistoryScreen(
 ) {
     PointHistoryBackgroundImage(modifier)
     Column(modifier = modifier) {
-        Text(
-            text = "포인트 내역",
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(24.dp),
+        
+        OurCourageTextTopBar(
+            "포인트 내역"
         )
 
         PointHistoryList(
