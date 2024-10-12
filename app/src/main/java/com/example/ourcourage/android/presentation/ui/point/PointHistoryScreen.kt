@@ -99,8 +99,7 @@ fun PointHistoryBackgroundImage(modifier: Modifier = Modifier) {
                 .wrapContentWidth()
                 .background(Color.Transparent)
                 .height(490.dp)
-                .align(Alignment.BottomEnd)
-                .padding(bottom = 24.dp),
+                .align(Alignment.BottomEnd),
             contentScale = ContentScale.Crop,
         )
     }
