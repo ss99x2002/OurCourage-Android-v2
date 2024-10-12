@@ -1,4 +1,4 @@
-package com.example.ourcourage.android.presentation.ui.multiuse.returns.compelete
+package com.example.ourcourage.android.presentation.ui.multiuse.scan.compelete
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
