@@ -114,18 +114,17 @@ fun LoginTitleText(
 @Composable
 fun LoginButton(
     @DrawableRes loginButton: Int,
-    onClick: () -> Unit = {},
     modifier: Modifier = Modifier,
+    onClick: () -> Unit = {},
 ) {
     Image(
         painter = painterResource(loginButton),
         contentDescription = "LoginButtonImage",
-        modifier =
-            modifier
-                .clickable {
-                    onClick()
-                },
         alignment = Alignment.BottomCenter,
+        modifier =
+            modifier.clickable {
+                onClick()
+            },
     )
 }
 

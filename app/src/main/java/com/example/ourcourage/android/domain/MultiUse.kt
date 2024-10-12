@@ -1,12 +1,15 @@
 package com.example.ourcourage.android.domain
 
-import com.example.ourcourage.android.R
-
 data class MultiUse(
-    val rentalLocationId: Int,
-    val locationName: String,
     val useAt: String,
-    val status: String,
+    val point: Int = 100,
+    val userId: Int = 1,
+    val locationId: Int = 1,
+    val locationName: String,
+    val locationAddress: String = "",
+    val locationImageUrl: Int,
+    val latitude: Double = 0.0,
+    val longitude: Double = 0.0,
     val multiUseContainerId: Int,
-    val multiUseImage: Int = R.drawable.img_tumbler,
+    val status: String,
 )
