@@ -6,6 +6,6 @@ import androidx.compose.ui.Modifier
 @Composable
 fun MyPageMultiUseStatLayout(
     modifier: Modifier = Modifier,
-    title : String,
+    title: String,
 ) {
 }

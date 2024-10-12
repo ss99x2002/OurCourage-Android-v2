@@ -1,8 +1,6 @@
 package com.example.ourcourage.android.presentation.ui.mypage
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,15 +15,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.ourcourage.android.R
 import com.example.ourcourage.android.domain.User
 import com.example.ourcourage.android.presentation.ui.component.OurCourageDefaultButtonComponent
-import com.example.ourcourage.android.presentation.ui.component.OurCourageTextField
 
 @Composable
 fun MyPageProfile(
@@ -36,31 +30,31 @@ fun MyPageProfile(
     var isEditingNickName = remember { mutableStateOf(false) }
 
     Row(
-        modifier = modifier
+        modifier = modifier,
     ) {
-
         Image(
             painter = painterResource(id = R.drawable.img_profile),
             contentDescription = "ProfileImage",
-            modifier = Modifier
-                .size(60.dp)
+            modifier =
+                Modifier
+                    .size(60.dp),
         )
 
         Column(
-            modifier = Modifier
-                .padding(start = 8.dp, top = 4.dp),
-            verticalArrangement = Arrangement.Center
-
+            modifier =
+                Modifier
+                    .padding(start = 8.dp, top = 4.dp),
+            verticalArrangement = Arrangement.Center,
         ) {
             if (isEditingNickName.value) {
                 MyPageProfileNickNameEditText(
-                    modifier = Modifier
+                    modifier = Modifier,
                 )
             } else {
                 MyPageProfileNickNameText(
                     modifier = Modifier,
                     user = user,
-                    onClickEditButton = onClickEditButton
+                    onClickEditButton = onClickEditButton,
                 )
             }
 
@@ -70,11 +64,12 @@ fun MyPageProfile(
         }
 
         Spacer(
-            modifier = Modifier.fillMaxWidth(0.3f)
+            modifier = Modifier.fillMaxWidth(0.3f),
         )
         Box(
-            modifier = Modifier
-                .align(Alignment.CenterVertically),
+            modifier =
+                Modifier
+                    .align(Alignment.CenterVertically),
         ) {
             OurCourageDefaultButtonComponent(
                 text = if (isEditingNickName.value) "수정완료" else "로그아웃",
@@ -85,9 +80,8 @@ fun MyPageProfile(
                         // 로그아웃 시행
                     }
                 },
-                isEnabled = true
+                isEnabled = true,
             )
-
         }
     }
 }

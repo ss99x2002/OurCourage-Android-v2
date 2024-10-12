@@ -10,6 +10,6 @@ fun MyPageProfileNickNameEditText(modifier: Modifier = Modifier) {
         modifier = modifier,
         hint = "변경 할 닉네임을 입력해주세요.",
         height = 45,
-        isError = false
+        isError = false,
     )
 }

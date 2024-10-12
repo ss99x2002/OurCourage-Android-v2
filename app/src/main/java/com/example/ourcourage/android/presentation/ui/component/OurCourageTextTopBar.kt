@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun OurCourageTextTopBar(
-    title: String
+    title: String,
 ) {
     Text(
         text = title,

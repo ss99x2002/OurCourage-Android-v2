@@ -16,33 +16,30 @@ import androidx.compose.ui.unit.sp
 import com.example.ourcourage.android.R
 import com.example.ourcourage.android.domain.User
 
-
 @Composable
 fun MyPageProfileNickNameText(
     modifier: Modifier = Modifier,
     user: User,
-    onClickEditButton: () -> Unit = { }
+    onClickEditButton: () -> Unit = { },
 ) {
-
     Row(modifier = modifier) {
         Text(
             "${user.nickName}님",
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(end = 4.dp)
+            modifier = Modifier.padding(end = 4.dp),
         )
 
         Image(
             painter = painterResource(R.drawable.ic_pen),
             contentDescription = "EditButton",
-            modifier = Modifier
-                .size(20.dp)
-                .align(Alignment.CenterVertically)
-                .clickable {
-                    onClickEditButton()
-                }
+            modifier =
+                Modifier
+                    .size(20.dp)
+                    .align(Alignment.CenterVertically)
+                    .clickable {
+                        onClickEditButton()
+                    },
         )
-
     }
-
 }
