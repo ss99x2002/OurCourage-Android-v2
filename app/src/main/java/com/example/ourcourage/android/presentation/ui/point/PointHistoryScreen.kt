@@ -2,13 +2,17 @@ package com.example.ourcourage.android.presentation.ui.point
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -38,6 +42,16 @@ fun PointHistoryScreen(
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(24.dp),
         )
+
+        PointHistoryList(
+            multiUseList = multiUseList,
+            modifier = Modifier
+                .padding(horizontal = 24.dp)
+                .fillMaxWidth()
+                .height(640.dp)
+        )
+
+        Spacer(modifier = Modifier.height(24.dp))
     }
 }
 
@@ -46,7 +60,17 @@ fun PointHistoryList(
     modifier: Modifier = Modifier,
     multiUseList: List<MultiUse>,
 ) {
-    LazyColumn {
+    LazyColumn(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        items(multiUseList) { multiUse ->
+            PointHistoryItem(
+                multiUse = multiUse,
+                modifier = Modifier
+                    .fillMaxSize()
+            )
+        }
     }
 }
 
@@ -58,10 +82,10 @@ fun PointHistoryBackgroundImage(modifier: Modifier = Modifier) {
             painter = painterResource(R.drawable.img_return_complete_top_coin_background),
             contentDescription = "ReturnTopCoinBackgroundImage",
             modifier =
-                Modifier
-                    .wrapContentWidth()
-                    .background(Color.Transparent)
-                    .height(460.dp),
+            Modifier
+                .wrapContentWidth()
+                .background(Color.Transparent)
+                .height(460.dp),
             contentScale = ContentScale.Crop,
             alignment = Alignment.TopStart,
         )
@@ -71,12 +95,12 @@ fun PointHistoryBackgroundImage(modifier: Modifier = Modifier) {
             painter = painterResource(R.drawable.img_return_complete_bottom_coin_background),
             contentDescription = "ReturnTopCoinBackgroundImage",
             modifier =
-                Modifier
-                    .wrapContentWidth()
-                    .background(Color.Transparent)
-                    .height(490.dp)
-                    .align(Alignment.BottomEnd)
-                    .padding(bottom = 24.dp),
+            Modifier
+                .wrapContentWidth()
+                .background(Color.Transparent)
+                .height(490.dp)
+                .align(Alignment.BottomEnd)
+                .padding(bottom = 24.dp),
             contentScale = ContentScale.Crop,
         )
     }
