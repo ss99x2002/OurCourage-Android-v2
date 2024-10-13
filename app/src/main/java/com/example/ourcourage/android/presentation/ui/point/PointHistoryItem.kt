@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -37,7 +36,7 @@ fun PointHistoryItem(
     Card(
         modifier = modifier,
         colors = CardDefaults.cardColors(Color.White),
-        elevation = CardDefaults.cardElevation(1.dp)
+        elevation = CardDefaults.cardElevation(1.dp),
     ) {
         Column(modifier.padding(vertical = 12.dp, horizontal = 16.dp)) {
             Text(
@@ -48,17 +47,18 @@ fun PointHistoryItem(
                 Image(
                     painter = painterResource(R.drawable.ic_launcher_background),
                     modifier =
-                    Modifier
-                        .padding(end = 12.dp, top = 2.dp)
-                        .size(70.dp)
-                        .clip(RoundedCornerShape(20.dp))
-                        .border(width = 1.dp, color = Color(StrokeBlue.value), shape = RoundedCornerShape(20.dp)),
+                        Modifier
+                            .padding(end = 12.dp, top = 2.dp)
+                            .size(70.dp)
+                            .clip(RoundedCornerShape(20.dp))
+                            .border(width = 1.dp, color = Color(StrokeBlue.value), shape = RoundedCornerShape(20.dp)),
                     contentDescription = "MultiUseCafeThumbNail",
                 )
                 Column(
-                    modifier = Modifier
-                        .align(Alignment.CenterVertically)
-                        .fillMaxWidth(),
+                    modifier =
+                        Modifier
+                            .align(Alignment.CenterVertically)
+                            .fillMaxWidth(),
                 ) {
                     Text(
                         text = "+${multiUse.point}p 획득",
