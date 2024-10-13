@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.ourcourage.android.ui.theme.ChipBlue
 import com.example.ourcourage.android.ui.theme.ChipWhite
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
@@ -23,6 +24,7 @@ fun OurCourageChipComponent(
     selectedColor: Color = Color(ChipBlue.value),
     unselectedColor: Color = Color(ChipWhite.value),
     text: String = "",
+    fontSize: Int = 14,
     onClick: () -> Unit,
 ) {
     Surface(
@@ -45,11 +47,11 @@ fun OurCourageChipComponent(
     ) {
         Text(
             modifier =
-                Modifier
-                    .padding(horizontal = 36.dp, vertical = 8.dp)
+                modifier
                     .wrapContentSize(),
             textAlign = TextAlign.Center,
             text = text,
+            fontSize = fontSize.sp,
         )
     }
 }
@@ -71,6 +73,7 @@ fun OurCourageChipPreview() {
                     .wrapContentSize()
                     .padding(20.dp),
             onClick = { onChipClick() },
+            fontSize = 14,
         )
     }
 }
