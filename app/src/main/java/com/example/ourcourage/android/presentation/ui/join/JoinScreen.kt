@@ -25,9 +25,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ourcourage.android.R
 import com.example.ourcourage.android.model.ChipState
+import com.example.ourcourage.android.presentation.ui.component.OurCourageChips
 import com.example.ourcourage.android.presentation.ui.component.OurCourageDefaultButtonComponent
 import com.example.ourcourage.android.presentation.ui.component.OurCourageTextField
-import com.example.ourcourage.android.presentation.ui.component.dialog.OurCourageChips
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 
 @Composable
@@ -132,6 +132,10 @@ fun GenderLayout(modifier: Modifier = Modifier) {
                 Modifier
                     .padding(top = 24.dp, bottom = 0.dp, start = 8.dp, end = 8.dp)
                     .fillMaxWidth(),
+            chipModifier =
+                Modifier
+                    .weight(1f)
+                    .height(48.dp),
         )
     }
 }
