@@ -1,4 +1,4 @@
-package com.example.ourcourage.android.presentation.ui.mypage
+package com.example.ourcourage.android.presentation.ui.mypage.profile
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

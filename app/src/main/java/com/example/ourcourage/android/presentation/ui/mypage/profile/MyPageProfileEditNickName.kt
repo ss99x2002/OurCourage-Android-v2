@@ -1,4 +1,4 @@
-package com.example.ourcourage.android.presentation.ui.mypage
+package com.example.ourcourage.android.presentation.ui.mypage.profile
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
