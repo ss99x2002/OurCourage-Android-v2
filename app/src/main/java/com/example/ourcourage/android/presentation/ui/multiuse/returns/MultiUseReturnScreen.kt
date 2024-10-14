@@ -21,6 +21,8 @@ import androidx.compose.ui.unit.dp
 import com.example.ourcourage.android.R
 import com.example.ourcourage.android.domain.MultiUse
 import com.example.ourcourage.android.presentation.ui.component.OurCourageDefaultButtonComponent
+import com.example.ourcourage.android.presentation.ui.multiuse.returns.detail.MultiUseDetailLayout
+import com.example.ourcourage.android.presentation.ui.multiuse.returns.location.MultiUseReturnLocationMapLayout
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 
 @Composable

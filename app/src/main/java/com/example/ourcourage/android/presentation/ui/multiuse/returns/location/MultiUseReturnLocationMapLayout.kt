@@ -1,4 +1,4 @@
-package com.example.ourcourage.android.presentation.ui.multiuse.returns
+package com.example.ourcourage.android.presentation.ui.multiuse.returns.location
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image

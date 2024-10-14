@@ -1,4 +1,4 @@
-package com.example.ourcourage.android.presentation.ui.multiuse.returns
+package com.example.ourcourage.android.presentation.ui.multiuse.returns.detail
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
