@@ -18,12 +18,9 @@ import com.example.ourcourage.android.presentation.ui.home.top.HomeMultiUseTopTi
 import com.example.ourcourage.android.ui.theme.BackgroundBlue
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 
-@Composable
-fun HomeScreen() {
-}
 
 @Composable
-fun HomeScreenContent(
+fun HomeScreen(
     modifier: Modifier = Modifier,
     userName: String,
 ) {
@@ -56,7 +53,7 @@ fun HomeScreenContent(
 @Composable
 fun HomeScreenPreview() {
     OurCourageAndroidv2Theme {
-        HomeScreenContent(
+       HomeScreen(
             userName = "신서현",
             modifier = Modifier.fillMaxSize(),
         )
