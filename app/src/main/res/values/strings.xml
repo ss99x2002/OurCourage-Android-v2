@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">OurCourage-Android-v2</string>
+
+    // Bottom navigation
+    <string name="home">홈</string>
+    <string name="point">포인트</string>
+    <string name="profile">마이 페이지</string>
+    <string name="camera">카메라</string>
+
 </resources>
