@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.sp
 import com.example.ourcourage.android.R
 import com.example.ourcourage.android.domain.User
 import com.example.ourcourage.android.model.ChipState
-import com.example.ourcourage.android.presentation.ui.component.OurCourageChips
+import com.example.ourcourage.android.presentation.ui.component.chip.OurCourageChips
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 import com.example.ourcourage.android.ui.theme.PrimaryBlue
 import com.example.ourcourage.android.ui.theme.StatReturnTypePink

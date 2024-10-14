@@ -1,4 +1,4 @@
-package com.example.ourcourage.android.presentation.ui.component
+package com.example.ourcourage.android.presentation.ui.component.chip
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
