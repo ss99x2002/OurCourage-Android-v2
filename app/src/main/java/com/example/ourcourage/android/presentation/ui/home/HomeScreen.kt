@@ -22,6 +22,7 @@ import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 fun HomeScreen(
     modifier: Modifier = Modifier,
     userName: String,
+    onClickMultiUseItem: () -> Unit,
 ) {
     Column(modifier = modifier.background(Color(BackgroundBlue.value))) {
         OurCourageTextTopBar(
@@ -44,6 +45,7 @@ fun HomeScreen(
                 Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 24.dp),
+            onClickMultiUseItem = onClickMultiUseItem,
         )
     }
 }
@@ -55,6 +57,7 @@ fun HomeScreenPreview() {
         HomeScreen(
             userName = "신서현",
             modifier = Modifier.fillMaxSize(),
+            onClickMultiUseItem = { },
         )
     }
 }

@@ -2,6 +2,7 @@ package com.example.ourcourage.android.presentation.ui.home.list
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,6 +30,7 @@ import com.example.ourcourage.android.domain.MultiUse
 fun HomeMultiUseHistoryList(
     modifier: Modifier = Modifier,
     list: List<MultiUse>,
+    onClickMultiUseItem: () -> Unit,
 ) {
     Column(modifier) {
         Card(
@@ -76,7 +78,10 @@ fun HomeMultiUseHistoryList(
                             modifier =
                                 Modifier
                                     .fillMaxWidth()
-                                    .padding(vertical = 4.dp),
+                                    .padding(vertical = 4.dp)
+                                    .clickable {
+                                        onClickMultiUseItem()
+                                    },
                         )
                     }
                 }
