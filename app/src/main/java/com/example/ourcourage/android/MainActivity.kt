@@ -1,6 +1,5 @@
 package com.example.ourcourage.android
 
-import android.graphics.drawable.Icon
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -10,9 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBarItem
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
-import androidx.compose.material3.NavigationBarItemColors
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -29,11 +25,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import coil.imageLoader
 import com.example.ourcourage.android.domain.User
 import com.example.ourcourage.android.presentation.ui.home.HomeScreen
 import com.example.ourcourage.android.presentation.ui.mypage.MyPageScreen
-import com.example.ourcourage.android.presentation.ui.navigation.Screen
+import com.example.ourcourage.android.presentation.ui.navigation.MainBottomNavigationType
 import com.example.ourcourage.android.presentation.ui.point.PointHistoryScreen
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 import com.example.ourcourage.android.ui.theme.PrimaryBlue
@@ -45,37 +40,38 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             OurCourageAndroidv2Theme {
-                val items: List<Screen> = listOf(
-                    Screen.Home,
-                    Screen.Point,
-                    Screen.Camera,
-                    Screen.Profile
-                )
+                val items: List<MainBottomNavigationType> =
+                    listOf(
+                        MainBottomNavigationType.Home,
+                        MainBottomNavigationType.Point,
+                        MainBottomNavigationType.Camera,
+                        MainBottomNavigationType.Profile,
+                    )
 
                 val navController = rememberNavController()
 
-                Scaffold(modifier = Modifier.fillMaxSize(),
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
                     bottomBar = {
                         BottomNavigation(
                             backgroundColor = Color.White,
                         ) {
                             val navBackStackEntry by navController.currentBackStackEntryAsState()
                             val currentRoute = navBackStackEntry?.destination?.route
-
-
                             items.forEach { screen ->
                                 NavigationBarItem(
                                     label = {
                                         Text(text = stringResource(id = screen.resourceId))
                                     },
                                     selected = currentRoute == screen.route,
-                                    colors = NavigationBarItemDefaults.colors(
-                                        selectedTextColor = PrimaryBlue,
-                                        unselectedTextColor = StrokeGrey,
-                                        selectedIconColor = PrimaryBlue,
-                                        unselectedIconColor = StrokeGrey,
-                                        indicatorColor = Color.White
-                                    ),
+                                    colors =
+                                        NavigationBarItemDefaults.colors(
+                                            selectedTextColor = PrimaryBlue,
+                                            unselectedTextColor = StrokeGrey,
+                                            selectedIconColor = PrimaryBlue,
+                                            unselectedIconColor = StrokeGrey,
+                                            indicatorColor = Color.White,
+                                        ),
                                     onClick = {
                                         navController.navigate(screen.route) {
                                             popUpTo(navController.graph.findStartDestination().id) {
@@ -88,24 +84,23 @@ class MainActivity : ComponentActivity() {
                                     icon = {
                                         Icon(
                                             imageVector = ImageVector.vectorResource(screen.icon),
-                                            contentDescription = screen.route
+                                            contentDescription = screen.route,
                                         )
-                                    }
+                                    },
                                 )
                             }
-
                         }
-                    }) { innerPadding ->
+                    },
+                ) { innerPadding ->
                     NavHost(
                         navController = navController,
-                        startDestination = Screen.Home.route,
-                        modifier = Modifier.padding(innerPadding)
+                        startDestination = MainBottomNavigationType.Home.route,
+                        modifier = Modifier.padding(innerPadding),
                     ) {
-
-                        composable(route = Screen.Home.route) { HomeScreen(modifier = Modifier.fillMaxSize(), userName = "수밍밍이") }
-                        composable(route = Screen.Point.route) { PointHistoryScreen(modifier = Modifier.fillMaxSize(), multiUseList = MultiUseList.multiUseList) }
-                        composable(route = Screen.Camera.route) { }
-                        composable(route = Screen.Profile.route) { MyPageScreen(modifier = Modifier.fillMaxSize(), user = User("수밍밍이", true)) }
+                        composable(route = MainBottomNavigationType.Home.route) { HomeScreen(modifier = Modifier.fillMaxSize(), userName = "수밍밍이") }
+                        composable(route = MainBottomNavigationType.Point.route) { PointHistoryScreen(modifier = Modifier.fillMaxSize(), multiUseList = MultiUseList.multiUseList) }
+                        composable(route = MainBottomNavigationType.Camera.route) { }
+                        composable(route = MainBottomNavigationType.Profile.route) { MyPageScreen(modifier = Modifier.fillMaxSize(), user = User("수밍밍이", true)) }
                     }
                 }
             }
