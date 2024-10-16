@@ -14,25 +14,24 @@ sealed class MainBottomNavigationType(
     data object Home : MainBottomNavigationType(
         route = "home",
         resourceId = R.string.home,
-        icon = R.drawable.ic_bottom_home
+        icon = R.drawable.ic_bottom_home,
     )
 
     data object Point : MainBottomNavigationType(
         route = "point",
         resourceId = R.string.point,
-        icon = R.drawable.ic_bottom_point
+        icon = R.drawable.ic_bottom_point,
     )
-
 
     data object Camera : MainBottomNavigationType(
         route = "camera",
         resourceId = R.string.camera,
-        icon = R.drawable.ic_bottom_camera
+        icon = R.drawable.ic_bottom_camera,
     )
 
     data object Profile : MainBottomNavigationType(
         route = "profile",
         resourceId = R.string.profile,
-        icon = R.drawable.ic_bottom_my_profile
+        icon = R.drawable.ic_bottom_my_profile,
     )
 }
