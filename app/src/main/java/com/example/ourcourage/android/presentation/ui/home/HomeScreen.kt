@@ -11,8 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.ourcourage.android.MultiUseList.multiUseList
 import com.example.ourcourage.android.R
+import com.example.ourcourage.android.data.MultiUseList.multiUseList
 import com.example.ourcourage.android.presentation.ui.component.OurCourageTextTopBar
 import com.example.ourcourage.android.presentation.ui.home.list.HomeMultiUseHistoryList
 import com.example.ourcourage.android.presentation.ui.home.top.HomeMultiUseTopTitle

@@ -45,7 +45,15 @@ fun PointHistoryItem(
             )
             Row(modifier = Modifier) {
                 Image(
-                    painter = painterResource(R.drawable.ic_launcher_background),
+                    painter =
+                        painterResource(
+                            when (multiUse.multiUseContainerId) {
+                                1 -> R.drawable.ic_cup
+                                2 -> R.drawable.ic_bowl
+                                3 -> R.drawable.ic_lunch_box
+                                else -> R.drawable.ic_untensils
+                            },
+                        ),
                     modifier =
                         Modifier
                             .padding(end = 12.dp, top = 2.dp)

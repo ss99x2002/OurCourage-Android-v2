@@ -1,6 +1,7 @@
 package com.example.ourcourage.android.presentation.ui.component.dialog
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,16 +24,15 @@ import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 fun OurCourageOneButtonDialog(
     modifier: Modifier = Modifier,
     contentText: String = "",
-    disMissButtonText: String = "",
-    acceptButtonText: String = "",
-    onDismissButtonClick: () -> Unit = {},
-    onAcceptButtonClick: () -> Unit = {},
+    buttonText: String,
+    onButtonClick: () -> Unit,
 ) {
     Column(
         modifier =
             modifier
                 .clip(RoundedCornerShape(20.dp))
                 .background(Color.White),
+        verticalArrangement = Arrangement.Center,
     ) {
         Text(
             modifier =
@@ -52,9 +52,9 @@ fun OurCourageOneButtonDialog(
                         .wrapContentHeight()
                         .weight(1f)
                         .padding(horizontal = 32.dp),
-                text = acceptButtonText,
+                text = buttonText,
                 isEnabled = false,
-                onClick = onDismissButtonClick,
+                onClick = onButtonClick,
             )
         }
     }
@@ -73,8 +73,8 @@ fun OurCourageOneButtonDialogPreview() {
                     " 인증을 완료 하시겠습니까? \n" +
                     " 인증을 완료 하시겠습니까? \n" +
                     " 인증을 완료 하시겠습니까?",
-            acceptButtonText = "예",
-            onAcceptButtonClick = { },
+            buttonText = "예",
+            onButtonClick = { },
         )
     }
 }

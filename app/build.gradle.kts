@@ -48,6 +48,10 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -93,6 +97,16 @@ dependencies {
 
     // Material
     implementation("androidx.compose.material:material:1.7.0")
+
+    // Zxing
+    implementation("com.journeyapps:zxing-android-embedded:4.1.0")
+    implementation("com.google.zxing:core:3.4.0")
+
+    // Android View ConstraintLayout
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
+    // AppCompat
+    implementation("androidx.appcompat:appcompat:1.6.1")
 }
 
 ktlint {

@@ -9,7 +9,5 @@ sealed class ScreenType(val route: String) {
 
     object MultiUseReturn : ScreenType("multiUseReturn")
 
-    object QrCodeScan : ScreenType("qrCodeScan")
-
     object ScanComplete : ScreenType("scanComplete")
 }

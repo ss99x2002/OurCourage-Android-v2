@@ -1,4 +1,4 @@
-package com.example.ourcourage.android.presentation.ui.multiuse.scan.compelete
+package com.example.ourcourage.android.presentation.ui.scan.compelete
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -27,6 +27,7 @@ import com.example.ourcourage.android.ui.theme.StrokeBlue
 fun MultiUseReturnPointLayout(
     modifier: Modifier,
     multiUse: MultiUse,
+    onClickHomeButton: () -> Unit,
 ) {
     Column(
         modifier =
@@ -83,7 +84,7 @@ fun MultiUseReturnPointLayout(
 
         OurCourageDefaultButtonComponent(
             text = "홈으로",
-            onClick = { },
+            onClick = onClickHomeButton,
             modifier =
                 Modifier
                     .wrapContentHeight()

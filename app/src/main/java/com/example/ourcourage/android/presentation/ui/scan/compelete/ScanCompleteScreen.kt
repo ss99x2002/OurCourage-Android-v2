@@ -1,4 +1,4 @@
-package com.example.ourcourage.android.presentation.ui.multiuse.scan.compelete
+package com.example.ourcourage.android.presentation.ui.scan.compelete
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -54,6 +54,7 @@ fun ScanCompleteScreen(
             MultiUseReturnPointLayout(
                 modifier = Modifier.padding(top = 40.dp),
                 multiUse = multiUse,
+                onClickHomeButton = onClickHomeButton,
             )
         }
         // 하단 동전 배경 이미지

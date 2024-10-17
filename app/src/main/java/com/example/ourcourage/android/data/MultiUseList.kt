@@ -1,5 +1,6 @@
-package com.example.ourcourage.android
+package com.example.ourcourage.android.data
 
+import com.example.ourcourage.android.R
 import com.example.ourcourage.android.domain.MultiUse
 
 object MultiUseList {

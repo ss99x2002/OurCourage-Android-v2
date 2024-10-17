@@ -23,9 +23,9 @@ import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 @Composable
 fun OurCourageTwoButtonsDialog(
     modifier: Modifier = Modifier,
-    contentText: String = "",
-    disMissButtonText: String = "",
-    acceptButtonText: String = "",
+    contentText: String,
+    disMissButtonText: String = "아니오",
+    acceptButtonText: String = "예",
     onDismissButtonClick: () -> Unit = {},
     onAcceptButtonClick: () -> Unit = {},
 ) {
