@@ -49,8 +49,8 @@ class MainActivity : ComponentActivity() {
                     listOf(
                         MainBottomNavigationType.Home,
                         MainBottomNavigationType.Point,
-                        MainBottomNavigationType.Camera,
-                        MainBottomNavigationType.Profile,
+                        MainBottomNavigationType.Scan,
+                        MainBottomNavigationType.MyPage,
                     )
 
                 val navController = rememberNavController()
@@ -116,8 +116,8 @@ class MainActivity : ComponentActivity() {
                                 multiUseList = MultiUseList.multiUseList,
                             )
                         }
-                        composable(route = MainBottomNavigationType.Camera.route) { }
-                        composable(route = MainBottomNavigationType.Profile.route) { MyPageScreen(modifier = Modifier.fillMaxSize(), user = User("수밍밍이", true)) }
+                        composable(route = MainBottomNavigationType.Scan.route) { }
+                        composable(route = MainBottomNavigationType.MyPage.route) { MyPageScreen(modifier = Modifier.fillMaxSize(), user = User("수밍밍이", true)) }
 
                         // bottom x
                         composable(route = ScreenType.Join.route) { JoinScreen() }
@@ -130,7 +130,6 @@ class MainActivity : ComponentActivity() {
                                 onClickReturn = { navController.navigate(MainBottomNavigationType.Home.route) },
                             )
                         }
-                        composable(route = ScreenType.QrCodeScan.route) { }
                         composable(route = ScreenType.ScanComplete.route) {
                             ScanCompleteScreen(
                                 multiUse = MultiUse(multiUseContainerId = 1, locationName = "블루포트 인하대점", useAt = "2024-10-10 10:45:21", status = "대여중", userId = 1, locationImageUrl = R.drawable.img_tumbler),

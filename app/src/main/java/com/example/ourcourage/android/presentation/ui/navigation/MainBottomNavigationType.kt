@@ -23,14 +23,14 @@ sealed class MainBottomNavigationType(
         icon = R.drawable.ic_bottom_point,
     )
 
-    data object Camera : MainBottomNavigationType(
-        route = "camera",
+    data object Scan : MainBottomNavigationType(
+        route = "scan",
         resourceId = R.string.camera,
         icon = R.drawable.ic_bottom_camera,
     )
 
-    data object Profile : MainBottomNavigationType(
-        route = "profile",
+    data object MyPage : MainBottomNavigationType(
+        route = "myPage",
         resourceId = R.string.profile,
         icon = R.drawable.ic_bottom_my_profile,
     )
