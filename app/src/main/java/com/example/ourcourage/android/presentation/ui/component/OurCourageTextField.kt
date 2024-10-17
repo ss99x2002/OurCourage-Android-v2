@@ -36,6 +36,7 @@ fun OurCourageTextField(
     hint: String = "",
     height: Int,
     textStyle: TextStyle = LocalTextStyle.current.copy(color = Color.Black, fontSize = 24.sp),
+    innerTextFieldStyle: TextStyle = textStyle.copy(fontSize = 24.sp),
 ) {
     Column(modifier = modifier) {
         if (isError) {
@@ -57,7 +58,7 @@ fun OurCourageTextField(
                     .height(height.dp),
             value = value,
             onValueChange = onValueChange,
-            textStyle = textStyle,
+            textStyle = innerTextFieldStyle,
             decorationBox = { innerTextField ->
                 Box(
                     modifier =

@@ -25,7 +25,7 @@ import com.example.ourcourage.android.ui.theme.BackgroundBlue
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 
 @Composable
-fun MultiUseReturnCompleteScreen(
+fun ScanCompleteScreen(
     modifier: Modifier = Modifier,
     multiUse: MultiUse,
     onClickHomeButton: () -> Unit,
@@ -88,7 +88,7 @@ fun MultiUseReturnCompleteScreen(
 @Composable
 fun MultiUseReturnCompleteScreenPreview() {
     OurCourageAndroidv2Theme {
-        MultiUseReturnCompleteScreen(
+        ScanCompleteScreen(
             modifier = Modifier.fillMaxSize(),
             multiUse = MultiUse(multiUseContainerId = 1, locationName = "블루포트 공덕역점", useAt = "2024-10-10 10:45:21", status = "대여중", userId = 1, locationImageUrl = R.drawable.img_tumbler),
             onClickHomeButton = { },

@@ -87,6 +87,12 @@ dependencies {
     // Coil
     implementation("io.coil-kt:coil:2.2.2")
     implementation("io.coil-kt:coil-compose:2.2.2")
+
+    // Compose Navigation
+    implementation("androidx.navigation:navigation-compose:2.8.2")
+
+    // Material
+    implementation("androidx.compose.material:material:1.7.0")
 }
 
 ktlint {
