@@ -21,8 +21,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.ourcourage.android.MultiUseList
 import com.example.ourcourage.android.R
+import com.example.ourcourage.android.data.MultiUseList
 import com.example.ourcourage.android.domain.MultiUse
 import com.example.ourcourage.android.presentation.ui.component.OurCourageTextTopBar
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
