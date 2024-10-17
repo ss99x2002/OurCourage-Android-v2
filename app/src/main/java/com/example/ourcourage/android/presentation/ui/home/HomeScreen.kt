@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -35,7 +36,7 @@ fun HomeScreen(
             text = "${userName}님의",
             modifier =
                 Modifier
-                    .padding(24.dp)
+                    .padding(horizontal = 24.dp, vertical = 12.dp)
                     .fillMaxWidth(),
         )
 
@@ -44,13 +45,14 @@ fun HomeScreen(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 24.dp),
+                    .padding(horizontal = 24.dp)
+                    .wrapContentHeight(),
             onClickMultiUseItem = onClickMultiUseItem,
         )
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun HomeScreenPreview() {
     OurCourageAndroidv2Theme {

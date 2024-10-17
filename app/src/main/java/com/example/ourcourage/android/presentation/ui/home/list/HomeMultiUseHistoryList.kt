@@ -6,8 +6,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
@@ -65,9 +65,9 @@ fun HomeMultiUseHistoryList(
                 )
                 LazyColumn(
                     modifier =
-                        Modifier
-                            .padding(start = 12.dp, end = 12.dp, top = 10.dp, bottom = 120.dp)
-                            .height(400.dp),
+                        modifier
+                            .padding(top = 10.dp, bottom = 120.dp)
+                            .fillMaxHeight(),
                     verticalArrangement = Arrangement.spacedBy(4.dp),
                 ) {
                     // list 순회하면서 multiUseItem 가져온다.
