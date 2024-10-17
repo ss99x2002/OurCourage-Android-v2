@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -44,6 +45,7 @@ import com.example.ourcourage.android.presentation.ui.navigation.MainBottomNavig
 import com.example.ourcourage.android.presentation.ui.navigation.ScreenType
 import com.example.ourcourage.android.presentation.ui.point.PointHistoryScreen
 import com.example.ourcourage.android.presentation.ui.scan.ScanActivity
+import com.example.ourcourage.android.presentation.ui.scan.ScanConfirmDialog
 import com.example.ourcourage.android.presentation.ui.scan.compelete.ScanCompleteScreen
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 import com.example.ourcourage.android.ui.theme.PrimaryBlue
@@ -112,12 +114,14 @@ class MainActivity : ComponentActivity() {
                                 onClickMultiUseItem = { navController.navigate(ScreenType.MultiUseReturn.route) },
                             )
                         }
+
                         composable(route = MainBottomNavigationType.Point.route) {
                             PointHistoryScreen(
                                 modifier = Modifier.fillMaxSize(),
                                 multiUseList = MultiUseList.multiUseList,
                             )
                         }
+
                         composable(route = MainBottomNavigationType.Scan.route) {
                             var shouldLaunchScanner by remember { mutableStateOf(true) }
                             val context = LocalContext.current
@@ -127,7 +131,23 @@ class MainActivity : ComponentActivity() {
                                 ) { result ->
                                     if (result.resultCode == RESULT_OK) {
                                         shouldLaunchScanner = false
-                                        navController.navigate(ScreenType.ScanComplete.route)
+                                        if (!result.data!!.equals("1")) {
+                                            setContent {
+                                                ScanConfirmDialog(
+                                                    isError = true,
+                                                    modifier =
+                                                        Modifier
+                                                            .padding(horizontal = 24.dp),
+                                                    contentText = "잘못된 QR코드가 스캔되었습니다.",
+                                                    buttonText = "홈으로",
+                                                    onHomeButtonClick = {
+                                                        navController.navigate(MainBottomNavigationType.Home.route)
+                                                    },
+                                                )
+                                            }
+                                        } else {
+                                            navController.navigate(ScreenType.MultiUseRental.route)
+                                        }
                                     } else {
                                         shouldLaunchScanner = false
                                         navController.navigate(MainBottomNavigationType.Home.route)
