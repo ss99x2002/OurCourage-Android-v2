@@ -15,7 +15,6 @@ import com.example.ourcourage.android.R
 import com.example.ourcourage.android.data.MultiUseList.multiUseList
 import com.example.ourcourage.android.presentation.ui.component.OurCourageTextTopBar
 import com.example.ourcourage.android.presentation.ui.home.list.HomeMultiUseHistoryList
-import com.example.ourcourage.android.presentation.ui.home.top.HomeMultiUseTopTitle
 import com.example.ourcourage.android.ui.theme.BackgroundBlue
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 
