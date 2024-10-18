@@ -1,4 +1,4 @@
-package com.example.ourcourage.android.presentation.ui.home.top
+package com.example.ourcourage.android.presentation.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
