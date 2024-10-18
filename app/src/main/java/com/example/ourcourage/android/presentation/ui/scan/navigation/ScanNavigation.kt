@@ -1,5 +1,6 @@
 package com.example.ourcourage.android.presentation.ui.scan.navigation
 
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -32,5 +33,9 @@ fun NavGraphBuilder.scanCompleteGraph(
 fun NavHostController.navigateScanComplete() {
     navigate(
         route = ScreenType.ScanComplete.route,
-    )
+    ) {
+        popUpTo(graph.findStartDestination().id) {
+            inclusive = false
+        }
+    }
 }
