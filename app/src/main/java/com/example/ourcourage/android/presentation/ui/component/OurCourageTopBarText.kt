@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun OurCourageTextTopBar(
+fun OurCourageTopBarText(
     title: String,
     isUsedIcon: Boolean = false,
     iconDrawableRes: Int = 0,
