@@ -96,7 +96,7 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.8.2")
 
     // Material
-    implementation("androidx.compose.material:material:1.7.0")
+    implementation("androidx.compose.material:material:1.7.4")
 
     // Zxing
     implementation("com.journeyapps:zxing-android-embedded:4.1.0")
