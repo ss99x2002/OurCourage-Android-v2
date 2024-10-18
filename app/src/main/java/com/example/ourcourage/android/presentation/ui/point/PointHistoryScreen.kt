@@ -29,7 +29,7 @@ import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 
 @Composable
 fun PointHistoryScreen(
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier.fillMaxSize(),
     multiUseList: List<MultiUse>,
 ) {
     PointHistoryBackgroundImage(modifier)
