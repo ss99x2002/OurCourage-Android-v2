@@ -28,29 +28,19 @@ fun MainNavigator(
         modifier = Modifier.padding(innerPadding),
     ) {
         homeGraph(
-            navigateReturn = {
-                navController.navigateReturn()
-            },
-        )
-        rentalGraph(
-            navigateHome = {
-                navController.navigateHome()
-            },
-        )
-        returnGraph(
-            navigateHome = {
-                navController.navigateHome()
-            },
-            navigateScanComplete = {
-                navController.navigateScanComplete()
-            },
-        )
-        scanCompleteGraph(
-            navigateHome = {
-                navController.navigateHome()
-            },
+            navigateReturn = { navController.navigateReturn() },
         )
         pointGraph()
         myPageGraph()
+        rentalGraph(
+            navigateHome = { navController.navigateHome() },
+        )
+        returnGraph(
+            navigateHome = { navController.navigateHome() },
+            navigateScanComplete = { navController.navigateScanComplete() },
+        )
+        scanCompleteGraph(
+            navigateHome = { navController.navigateHome() },
+        )
     }
 }
