@@ -1,35 +1,35 @@
-package com.example.ourcourage.android.presentation.ui.navigation
+package com.example.ourcourage.android.presentation.ui.navigation.type
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.example.ourcourage.android.R
 
-sealed class MainBottomNavigationType(
+sealed class BottomNavType(
     val route: String,
     @StringRes
     val resourceId: Int,
     @DrawableRes
     val icon: Int,
 ) {
-    data object Home : MainBottomNavigationType(
+    data object Home : BottomNavType(
         route = "home",
         resourceId = R.string.home,
         icon = R.drawable.ic_bottom_home,
     )
 
-    data object Point : MainBottomNavigationType(
+    data object Point : BottomNavType(
         route = "point",
         resourceId = R.string.point,
         icon = R.drawable.ic_bottom_point,
     )
 
-    data object Scan : MainBottomNavigationType(
+    data object Scan : BottomNavType(
         route = "scan",
         resourceId = R.string.camera,
         icon = R.drawable.ic_bottom_camera,
     )
 
-    data object MyPage : MainBottomNavigationType(
+    data object MyPage : BottomNavType(
         route = "myPage",
         resourceId = R.string.profile,
         icon = R.drawable.ic_bottom_my_profile,

@@ -27,9 +27,10 @@ import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 
 @Composable
 fun MultiUseReturnScreen(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     multiUse: MultiUse,
     onClickReturn: () -> Unit,
+    onHomeButtonClick: () -> Unit = { },
 ) {
     Box(modifier = modifier.verticalScroll(rememberScrollState())) {
         // 배경 이미지 (가장 뒤쪽 재활용 이미지)
