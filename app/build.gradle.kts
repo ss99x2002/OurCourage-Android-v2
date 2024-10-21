@@ -100,7 +100,7 @@ dependencies {
 
     // Zxing
     implementation("com.journeyapps:zxing-android-embedded:4.1.0")
-    implementation("com.google.zxing:core:3.4.0")
+    implementation("com.google.zxing:core:3.5.3")
 
     // Android View ConstraintLayout
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
