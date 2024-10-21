@@ -91,7 +91,7 @@ fun MyPageMultiUseStatLayout(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .wrapContentHeight()
+                    .height(400.dp)
                     .padding(top = 12.dp),
         )
     }
