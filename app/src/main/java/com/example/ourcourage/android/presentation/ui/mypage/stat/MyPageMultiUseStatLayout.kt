@@ -32,6 +32,12 @@ import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 import com.example.ourcourage.android.ui.theme.PrimaryBlue
 import com.example.ourcourage.android.ui.theme.StatReturnTypePink
 
+val chipElements =
+    mutableStateListOf(
+        ChipState("주별", mutableStateOf(true)),
+        ChipState("월별", mutableStateOf(false)),
+    )
+
 @Composable
 fun MyPageMultiUseStatLayout(
     modifier: Modifier = Modifier,
@@ -96,12 +102,6 @@ fun MyPageMultiUseStatLayout(
         )
     }
 }
-
-val chipElements =
-    mutableStateListOf(
-        ChipState("주별", mutableStateOf(true)),
-        ChipState("월별", mutableStateOf(false)),
-    )
 
 @Composable
 fun MyPageMultiUseStatType(
