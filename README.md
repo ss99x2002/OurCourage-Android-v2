@@ -9,7 +9,7 @@
 - Flow : 데이터 스트림 관리
 - UiState : UI 상태 관리
 - Ktlint  : Kotlin style의 code format 설정
---
+  
   
 - CI/CD : 통합, 배포의 자동화
 - Multi Module : 모듈 분리 (경계성 향상) 빌드 속도 개선, 테스트 용이 => 리팩토링 하면서 진행해보자 
