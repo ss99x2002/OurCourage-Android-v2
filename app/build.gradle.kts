@@ -77,7 +77,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 
     // Hilt DI
-    implementation("com.google.dagger:hilt-android:2.38.1")
+    implementation("com.google.dagger:hilt-android:2.53.1")
     // kapt("com.google.dagger:hilt-android-compiler:2.38.1")
 
     // OkHttp
