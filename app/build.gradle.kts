@@ -108,20 +108,11 @@ dependencies {
     // AppCompat
     implementation("androidx.appcompat:appcompat:1.7.0")
 
-    // For Jetpack Compose.
-    implementation("com.patrykandpatrick.vico:compose:2.0.0-beta.2")
-
-    // For `compose`. Creates a `ChartStyle` based on an M2 Material Theme.
-    implementation("com.patrykandpatrick.vico:compose-m2:2.0.0-beta.2")
-
-    // For `compose`. Creates a `ChartStyle` based on an M3 Material Theme.
-    implementation("com.patrykandpatrick.vico:compose-m3:2.0.0-beta.2")
-
-    // Houses the core logic for charts and other elements. Included in all other modules.
-    implementation("com.patrykandpatrick.vico:core:2.0.0-beta.2")
-
-    // For the view system.
-    implementation("com.patrykandpatrick.vico:views:2.0.0-beta.2")
+    // For Jetpack Compose Vico Chart
+    implementation("com.patrykandpatrick.vico:compose:1.12.0")
+    implementation("com.patrykandpatrick.vico:compose-m3:1.12.0")
+    implementation("com.patrykandpatrick.vico:core:1.12.0")
+    implementation("com.patrykandpatrick.vico:views:1.12.0")
 }
 
 ktlint {
