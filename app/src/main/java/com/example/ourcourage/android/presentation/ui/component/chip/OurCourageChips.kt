@@ -21,8 +21,7 @@ fun OurCourageChips(
                 selected = chipState.isSelected.value,
                 onClick = { onChipClick(chipState.text, !chipState.isSelected.value, idx) },
                 text = chipState.text,
-                modifier =
-                chipModifier,
+                modifier = chipModifier,
                 fontSize = chipFontSize,
             )
         }

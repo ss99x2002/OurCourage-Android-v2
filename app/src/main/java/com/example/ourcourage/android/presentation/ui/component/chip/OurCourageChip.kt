@@ -1,6 +1,7 @@
 package com.example.ourcourage.android.presentation.ui.component.chip
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -43,7 +44,8 @@ fun OurCourageChipComponent(
                         Color(
                             ChipBlue.value,
                         ),
-                ),
+                )
+                .clickable(onClick = onClick),
     ) {
         Text(
             modifier =
