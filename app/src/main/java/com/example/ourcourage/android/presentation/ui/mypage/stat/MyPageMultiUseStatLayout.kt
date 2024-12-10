@@ -85,9 +85,9 @@ fun MyPageMultiUseStatLayout(
                             .width(200.dp)
                             .height(48.dp)
                             .align(Alignment.CenterVertically),
-                    onChipClick = { text, _, chipIndex ->
-                        chipElements.forEachIndexed { index, chipState ->
-                            chipState.isSelected.value = index == chipIndex
+                    onChipClick = { text, isSelected, chipIndex ->
+                        chipElements.forEachIndexed { index, chip ->
+                            chip.isSelected.value = index == chipIndex
                         }
                         selectedGraphType = text
                     },
