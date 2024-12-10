@@ -23,8 +23,8 @@ import com.example.ourcourage.android.ui.theme.StrokeGrey
 
 @Composable
 fun HomeMultiUseHistoryItem(
-    modifier: Modifier = Modifier,
     multiUse: MultiUse,
+    modifier: Modifier = Modifier,
 ) {
     Card(
         modifier = modifier,

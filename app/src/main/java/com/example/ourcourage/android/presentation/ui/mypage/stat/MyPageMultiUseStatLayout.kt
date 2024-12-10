@@ -1,6 +1,6 @@
 package com.example.ourcourage.android.presentation.ui.mypage.stat
 
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,25 +12,44 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.ourcourage.android.R
 import com.example.ourcourage.android.domain.User
 import com.example.ourcourage.android.model.ChipState
 import com.example.ourcourage.android.presentation.ui.component.chip.OurCourageChips
+import com.example.ourcourage.android.ui.theme.BackgroundTransparentWhite
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 import com.example.ourcourage.android.ui.theme.PrimaryBlue
 import com.example.ourcourage.android.ui.theme.StatReturnTypePink
+import com.example.ourcourage.android.ui.theme.StrokeBlue
+import com.patrykandpatrick.vico.core.chart.composed.plus
+import com.patrykandpatrick.vico.core.entry.composed.plus
+
+val chipElements =
+    mutableStateListOf(
+        ChipState("주별", mutableStateOf(true)),
+        ChipState("월별", mutableStateOf(false)),
+    )
+
+val rentalList = listOf(5, 8, 12, 7, 10, 14, 9, 12, 3, 4, 5, 3)
+val returnList = listOf(1, 3, 5, 7, 1, 3, 5, 2, 3, 1, 7, 3)
+
+val week = listOf("월", "화", "수", "목", "금", "토", "일")
+val month = listOf("1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월")
 
 @Composable
 fun MyPageMultiUseStatLayout(
@@ -38,6 +57,8 @@ fun MyPageMultiUseStatLayout(
     title: String,
     user: User,
 ) {
+    var selectedGraphType by remember { mutableStateOf("주별") }
+
     Column(modifier = modifier) {
         Text(
             text = title,
@@ -48,60 +69,69 @@ fun MyPageMultiUseStatLayout(
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
         )
-
-        Row(modifier = Modifier) {
-            OurCourageChips(
-                elements = chipElements,
-                modifier =
-                    Modifier
-                        .width(200.dp)
-                        .height(48.dp)
-                        .align(Alignment.CenterVertically),
-                onChipClick = { _, _, chipIndex -> },
-                chipModifier =
-                    Modifier
-                        .padding(
-                            horizontal = 12.dp,
-                        )
-                        .height(30.dp)
-                        .width(80.dp)
-                        .align(Alignment.CenterVertically),
-                chipFontSize = 12,
-            )
-
-            Column(
-                modifier =
-                    Modifier
-                        .align(Alignment.CenterVertically)
-                        .padding(start = 32.dp),
-            ) {
-                MyPageMultiUseStatType(
-                    typeColor = Color(PrimaryBlue.value),
-                    type = "대여",
-                )
-
-                MyPageMultiUseStatType(
-                    typeColor = Color(StatReturnTypePink.value),
-                    type = "반납",
-                )
-            }
-        }
-
-        MyPageMultiUseStatGraph(
+        Card(
             modifier =
                 Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .padding(top = 12.dp),
-        )
+                    .fillMaxWidth(),
+            colors = CardDefaults.cardColors(BackgroundTransparentWhite),
+            border =
+                BorderStroke(1.dp, Color(StrokeBlue.value)),
+        ) {
+            Row(modifier = Modifier.padding(top = 12.dp)) {
+                OurCourageChips(
+                    elements = chipElements,
+                    modifier =
+                        Modifier
+                            .width(200.dp)
+                            .height(48.dp)
+                            .align(Alignment.CenterVertically),
+                    onChipClick = { text, isSelected, chipIndex ->
+                        chipElements.forEachIndexed { index, chip ->
+                            chip.isSelected.value = index == chipIndex
+                        }
+                        selectedGraphType = text
+                    },
+                    chipModifier =
+                        Modifier
+                            .padding(horizontal = 12.dp)
+                            .height(30.dp)
+                            .width(80.dp)
+                            .align(Alignment.CenterVertically),
+                    chipFontSize = 12,
+                )
+
+                Column(
+                    modifier =
+                        Modifier
+                            .align(Alignment.CenterVertically)
+                            .padding(start = 32.dp),
+                ) {
+                    MyPageMultiUseStatType(
+                        typeColor = Color(PrimaryBlue.value),
+                        type = "대여",
+                    )
+
+                    MyPageMultiUseStatType(
+                        typeColor = Color(StatReturnTypePink.value),
+                        type = "반납",
+                    )
+                }
+            }
+
+            MyPageMultiUseStatGraph(
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .height(400.dp)
+                        .padding(top = 8.dp),
+                colorList = listOf(PrimaryBlue, StatReturnTypePink),
+                bottomAxisLabels = getBottomAxisLabels(selectedGraphType),
+                rentalData = rentalList,
+                returnData = returnList,
+            )
+        }
     }
 }
-
-val chipElements =
-    mutableStateListOf(
-        ChipState("주별", mutableStateOf(true)),
-        ChipState("월별", mutableStateOf(false)),
-    )
 
 @Composable
 fun MyPageMultiUseStatType(
@@ -127,18 +157,17 @@ fun MyPageMultiUseStatType(
                 Modifier
                     .padding(start = 4.dp)
                     .align(Alignment.CenterVertically),
-            color = Color.White,
+            color = Color.Black,
         )
     }
 }
 
-@Composable
-fun MyPageMultiUseStatGraph(modifier: Modifier) {
-    Image(
-        painter = painterResource(R.drawable.img_dummy_stat),
-        contentDescription = "StatGraphDummyImage",
-        modifier = modifier,
-    )
+fun getBottomAxisLabels(selectedType: String): List<String> {
+    return when (selectedType) {
+        "주별" -> week
+        "월별" -> month
+        else -> week
+    }
 }
 
 @Preview(showBackground = true)

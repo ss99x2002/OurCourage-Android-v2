@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ourcourage.android.domain.User
+import com.example.ourcourage.android.ui.theme.BackgroundTransparentWhite
 import com.example.ourcourage.android.ui.theme.PrimaryBlue
 import com.example.ourcourage.android.ui.theme.StrokeBlue
 import com.example.ourcourage.android.ui.theme.StrokeGrey
@@ -62,7 +63,7 @@ fun MyPageMultiUseCounterCardView(
 ) {
     Card(
         modifier = modifier,
-        colors = CardDefaults.cardColors(Color.White),
+        colors = CardDefaults.cardColors(BackgroundTransparentWhite),
         border =
             BorderStroke(1.dp, Color(StrokeBlue.value)),
     ) {

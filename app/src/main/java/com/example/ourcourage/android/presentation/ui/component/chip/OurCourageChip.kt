@@ -1,6 +1,7 @@
 package com.example.ourcourage.android.presentation.ui.component.chip
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,7 +21,7 @@ import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 @Composable
 fun OurCourageChipComponent(
     modifier: Modifier = Modifier,
-    selected: Boolean,
+    isSelected: Boolean,
     selectedColor: Color = Color(ChipBlue.value),
     unselectedColor: Color = Color(ChipWhite.value),
     text: String = "",
@@ -28,35 +29,24 @@ fun OurCourageChipComponent(
     onClick: () -> Unit,
 ) {
     Surface(
-        color =
-            when {
-                selected -> selectedColor
-                else -> unselectedColor
-            },
+        color = if (isSelected) selectedColor else unselectedColor,
         shape = RoundedCornerShape(100.dp),
         modifier =
             modifier
                 .border(
                     width = 1.dp,
                     shape = RoundedCornerShape(100.dp),
-                    color =
-                        Color(
-                            ChipBlue.value,
-                        ),
-                ),
+                    color = Color(ChipBlue.value),
+                )
+                .clickable(onClick = onClick),
     ) {
         Text(
-            modifier =
-                modifier
-                    .wrapContentSize(),
+            modifier = modifier.wrapContentSize(),
             textAlign = TextAlign.Center,
             text = text,
             fontSize = fontSize.sp,
         )
     }
-}
-
-fun onChipClick() {
 }
 
 @Composable
@@ -66,13 +56,13 @@ fun OurCourageChipPreview() {
         OurCourageChipComponent(
             selectedColor = Color(ChipBlue.value),
             unselectedColor = Color(ChipWhite.value),
-            selected = true,
+            isSelected = true,
             text = "여자",
             modifier =
                 Modifier
                     .wrapContentSize()
                     .padding(20.dp),
-            onClick = { onChipClick() },
+            onClick = { },
             fontSize = 14,
         )
     }
