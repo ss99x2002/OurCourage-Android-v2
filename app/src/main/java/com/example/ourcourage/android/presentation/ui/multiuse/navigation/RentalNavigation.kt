@@ -1,5 +1,7 @@
 package com.example.ourcourage.android.presentation.ui.multiuse.navigation
 
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
@@ -8,12 +10,15 @@ import com.example.ourcourage.android.presentation.ui.multiuse.rental.MultiUseRe
 import com.example.ourcourage.android.presentation.ui.navigation.type.ScreenType
 
 fun NavGraphBuilder.rentalGraph(
-    navigateHome: () -> Unit,
+    navigateScanCompleted: () -> Unit,
 ) {
     composable(
         route = ScreenType.MultiUseRental.route,
     ) {
-        MultiUseRentalScreen()
+        MultiUseRentalScreen(
+            modifier = Modifier.fillMaxSize(),
+            onClickRental = navigateScanCompleted,
+        )
     }
 }
 
