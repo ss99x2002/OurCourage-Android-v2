@@ -10,7 +10,7 @@ import com.example.ourcourage.android.presentation.ui.multiuse.returns.MultiUseR
 import com.example.ourcourage.android.presentation.ui.navigation.type.ScreenType
 
 fun NavGraphBuilder.returnGraph(
-    navigateScanComplete: () -> Unit,
+    navigateScan: () -> Unit,
     navigateHome: () -> Unit,
 ) {
     composable(
@@ -26,7 +26,7 @@ fun NavGraphBuilder.returnGraph(
                     userId = 1,
                     locationImageUrl = R.drawable.img_tumbler,
                 ),
-            onClickReturn = navigateScanComplete,
+            onClickReturn = navigateScan,
             // 스캔 activity 이동 navigate
             onHomeButtonClick = navigateHome,
         )
@@ -38,7 +38,7 @@ fun NavHostController.navigateReturn() {
         route = ScreenType.MultiUseReturn.route,
     ) {
         popUpTo(graph.findStartDestination().id) {
-            inclusive = false
+            saveState = true
         }
     }
 }

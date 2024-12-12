@@ -4,11 +4,16 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,6 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.ourcourage.android.R
+import com.example.ourcourage.android.presentation.ui.component.OurCourageDefaultButtonComponent
 import com.example.ourcourage.android.presentation.ui.component.OurCourageTopBarText
 import com.example.ourcourage.android.presentation.ui.multiuse.rental.choice.MultiUseRentalChoiceLayout
 import com.example.ourcourage.android.presentation.ui.multiuse.rental.location.MultiUseRentalLocationMapLayout
@@ -25,10 +31,18 @@ import com.example.ourcourage.android.ui.theme.BackgroundBlue
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 
 @Composable
-fun MultiUseRentalScreen(modifier: Modifier = Modifier) {
-    Box {
-        Column(modifier) {
+fun MultiUseRentalScreen(
+    modifier: Modifier = Modifier,
+    onClickRental: () -> Unit,
+) {
+    Box(modifier = modifier.fillMaxSize()) {
+        Column(
+            modifier =
+                Modifier
+                    .verticalScroll(rememberScrollState()),
+        ) {
             OurCourageTopBarText("대여내용")
+
             MultiUseRentalLocationMapLayout(
                 title = "대여장소",
                 titleIconRes = R.drawable.ic_location_pin,
@@ -49,8 +63,28 @@ fun MultiUseRentalScreen(modifier: Modifier = Modifier) {
                 modifier =
                     Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 32.dp, vertical = 8.dp),
+                        .padding(horizontal = 32.dp, vertical = 16.dp),
             )
+
+            Box(
+                modifier =
+                    Modifier
+                        .wrapContentSize()
+                        .padding(vertical = 12.dp),
+            ) {
+                OurCourageDefaultButtonComponent(
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .height(60.dp)
+                            .padding(horizontal = 24.dp),
+                    isEnabled = true,
+                    text = "다회용기 대여하기",
+                    onClick = { onClickRental() },
+                )
+            }
+
+            Spacer(modifier = Modifier.height(40.dp))
         }
 
         Image(
@@ -84,8 +118,8 @@ fun MultiUseRentalScreenPreview() {
         MultiUseRentalScreen(
             modifier =
                 Modifier
-                    .fillMaxSize()
                     .background(Color(BackgroundBlue.value)),
+            onClickRental = { },
         )
     }
 }

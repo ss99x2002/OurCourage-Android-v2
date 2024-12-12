@@ -85,11 +85,11 @@ fun MyPageMultiUseStatLayout(
                             .width(200.dp)
                             .height(48.dp)
                             .align(Alignment.CenterVertically),
-                    onChipClick = { text, isSelected, chipIndex ->
-                        chipElements.forEachIndexed { index, chip ->
-                            chip.isSelected.value = index == chipIndex
+                    onChipClick = { text, _, chipIndex ->
+                        chipElements.forEachIndexed { index, chipState ->
+                            chipState.isSelected.value = (index == chipIndex)
                         }
-                        selectedGraphType = text
+                        selectedGraphType = text // 이 부분은 ViewModel로 개선 할 수 있다. StateFlow로 구독 형식.
                     },
                     chipModifier =
                         Modifier
