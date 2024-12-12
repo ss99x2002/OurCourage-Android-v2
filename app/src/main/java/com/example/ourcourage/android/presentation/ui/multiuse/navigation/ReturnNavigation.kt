@@ -38,7 +38,7 @@ fun NavHostController.navigateReturn() {
         route = ScreenType.MultiUseReturn.route,
     ) {
         popUpTo(graph.findStartDestination().id) {
-            inclusive = false
+            saveState = true
         }
     }
 }
