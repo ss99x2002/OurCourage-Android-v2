@@ -72,47 +72,16 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-// 코루틴
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
-
-    // Hilt DI
-    implementation("com.google.dagger:hilt-android:2.38.1")
-    // kapt("com.google.dagger:hilt-android-compiler:2.38.1")
-
-    // OkHttp
-    implementation("com.squareup.okhttp3:okhttp:4.9.3")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
-
-    // Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-
-    // Coil
-    implementation("io.coil-kt:coil:2.2.2")
-    implementation("io.coil-kt:coil-compose:2.2.2")
-
-    // Compose Navigation
-    implementation("androidx.navigation:navigation-compose:2.8.3")
-
-    // Material
-    implementation("androidx.compose.material:material:1.7.4")
-
-    // Zxing
-    implementation("com.journeyapps:zxing-android-embedded:4.1.0")
-    implementation("com.google.zxing:core:3.5.3")
-
-    // Android View ConstraintLayout
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-
-    // AppCompat
-    implementation("androidx.appcompat:appcompat:1.7.0")
-
-    // For Jetpack Compose Vico Chart
-    implementation("com.patrykandpatrick.vico:compose:1.12.0")
-    implementation("com.patrykandpatrick.vico:compose-m3:1.12.0")
-    implementation("com.patrykandpatrick.vico:core:1.12.0")
-    implementation("com.patrykandpatrick.vico:views:1.12.0")
+    implementation(libs.bundles.coroutines)
+    implementation(libs.dagger.hilt.android)
+    implementation(libs.bundles.okhttp)
+    implementation(libs.bundles.retrofit)
+    implementation(libs.bundles.coil)
+    implementation(libs.androidx.navigation.navigation.compose)
+    implementation(libs.androidx.compose.material.meterial)
+    implementation(libs.bundles.zxing)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.bundles.vico)
 }
 
 ktlint {
