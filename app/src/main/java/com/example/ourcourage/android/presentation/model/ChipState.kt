@@ -1,4 +1,4 @@
-package com.example.ourcourage.android.model
+package com.example.ourcourage.android.presentation.model
 
 import androidx.compose.runtime.MutableState
 

@@ -3,7 +3,7 @@ package com.example.ourcourage.android.presentation.ui.component.chip
 import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.ourcourage.android.model.ChipState
+import com.example.ourcourage.android.presentation.model.ChipState
 
 @Composable
 fun OurCourageChips(
