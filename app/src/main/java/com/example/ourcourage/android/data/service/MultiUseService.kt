@@ -10,7 +10,7 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 // 다회용기 조회 / 대여 / 반납 서비스
-interface MultiUsesService {
+interface MultiUseService {
 
 
     @GET("$API/$VERSION/$USES/$LOCATION")
