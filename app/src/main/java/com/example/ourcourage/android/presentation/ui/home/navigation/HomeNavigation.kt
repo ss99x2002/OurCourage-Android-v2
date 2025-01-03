@@ -7,14 +7,15 @@ import com.example.ourcourage.android.presentation.ui.home.HomeScreen
 import com.example.ourcourage.android.presentation.ui.navigation.type.BottomNavType
 
 fun NavGraphBuilder.homeGraph(
-    navigateReturn: () -> Unit,
+    navigateReturn: (String) -> Unit,
 ) {
     composable(
         route = BottomNavType.Home.route,
     ) { navBackStackEntry ->
         HomeScreen(
-            userName = "수밍밍이",
-            onClickMultiUseItem = navigateReturn,
+            onClickMultiUseItem = { useAt ->
+                navigateReturn(useAt)
+            },
         )
     }
 }
