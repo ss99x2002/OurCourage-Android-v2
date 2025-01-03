@@ -14,16 +14,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import coil.compose.rememberImagePainter
+import coil.request.ImageRequest
 import com.example.ourcourage.android.domain.MultiUse
+import com.example.ourcourage.android.domain.model.RentalMultiUse
 import com.example.ourcourage.android.ui.theme.PrimaryBlue
 import com.example.ourcourage.android.ui.theme.StrokeGrey
 
 @Composable
 fun HomeMultiUseHistoryItem(
-    multiUse: MultiUse,
+    multiUse: RentalMultiUse,
     modifier: Modifier = Modifier,
 ) {
     Card(
@@ -33,7 +38,7 @@ fun HomeMultiUseHistoryItem(
         colors = CardDefaults.cardColors(Color.White),
     ) {
         Row {
-            Image(
+          AsyncImage(
                 modifier =
                     Modifier
                         .padding(12.dp)
@@ -43,7 +48,9 @@ fun HomeMultiUseHistoryItem(
                             Color(StrokeGrey.value),
                             shape = RoundedCornerShape(10.dp),
                         ),
-                painter = painterResource(id = multiUse.locationImageUrl),
+                model = ImageRequest.Builder(context = LocalContext.current)
+                    .data(multiUse.locationImageUrl)
+                    .build(),
                 contentDescription = "multiUseImage",
             )
             Column(
@@ -52,7 +59,7 @@ fun HomeMultiUseHistoryItem(
             ) {
                 Row {
                     Text(
-                        text = "다회용기",
+                        text = "다회용기 ${multiUse.multiUseContainerType.name}",
                         modifier = Modifier.padding(end = 8.dp),
                         color = Color.Black,
                         fontSize = 12.sp,

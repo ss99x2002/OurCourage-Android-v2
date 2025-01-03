@@ -25,12 +25,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.ourcourage.android.R
 import com.example.ourcourage.android.domain.MultiUse
+import com.example.ourcourage.android.domain.model.RentalMultiUse
 
 @Composable
 fun HomeMultiUseHistoryList(
     modifier: Modifier = Modifier,
-    list: List<MultiUse>,
-    onClickMultiUseItem: () -> Unit,
+    list: List<RentalMultiUse> = emptyList(),
+    useCount : Int,
+    onClickMultiUseItem: (String) -> Unit,
 ) {
     Column(modifier) {
         Card(
@@ -40,7 +42,7 @@ fun HomeMultiUseHistoryList(
             colors = CardDefaults.cardColors(containerColor = Color.White),
         ) {
             HomeMultiUseHistoryTitle(
-                text = "2개",
+                text = "${useCount}개",
                 textSize = 28f,
                 modifier =
                     Modifier
@@ -80,7 +82,7 @@ fun HomeMultiUseHistoryList(
                                     .fillMaxWidth()
                                     .padding(vertical = 4.dp)
                                     .clickable {
-                                        onClickMultiUseItem()
+                                        onClickMultiUseItem(multiUseItem.useAt)
                                     },
                         )
                     }
