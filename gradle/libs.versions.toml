@@ -17,9 +17,9 @@ composeNavigation = "2.8.3"
 material = "1.7.4"
 zxingAndroid = "4.1.0"
 zxingCore = "3.5.3"
-appCompat = " 1.7.0"
+appCompat = "1.7.0"
 vicoChart = "1.12.0"
-composeViewModel = "2.3.8"
+composeViewModel = "2.8.7"
 jsonSerialization ="1.5.0"
 kotlinSerializationConverter = "1.0.0"
 androidSecurity = "1.0.0-alpha04"
@@ -66,7 +66,7 @@ vico-core= {group = "com.patrykandpatrick.vico", name ="core", version.ref = "vi
 vico-views= {group = "com.patrykandpatrick.vico", name ="views", version.ref = "vicoChart"}
 
 
-viewmodel-compose = {group ="androidx.lifecycle", name= " lifecycle-viewmodel-compose", version.ref= "composeViewModel"}
+viewmodel-compose = {group ="androidx.lifecycle", name= "lifecycle-viewmodel-compose", version.ref= "composeViewModel"}
 
 json-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref  ="jsonSerialization"}
 kotlin-serilization-converter  = {group = "com.jakewharton.retrofit", name= "retrofit2-kotlinx-serialization-converter", version.ref ="kotlinSerializationConverter"}
