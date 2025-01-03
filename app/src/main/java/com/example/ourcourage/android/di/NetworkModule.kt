@@ -25,7 +25,7 @@ object NetworkModule {
     @Singleton
     fun provideRetrofit(client: OkHttpClient, jsonConverter: Converter.Factory): Retrofit =
         Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl(com.example.ourcourage.android.BuildConfig.API_BASE_URL)
             .client(client)
             .addConverterFactory(jsonConverter)
             .build()
@@ -33,7 +33,13 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideJsonConverterFactory(): Converter.Factory {
-        return Json.asConverterFactory("application/json".toMediaType())
+        val json = Json {
+            ignoreUnknownKeys = true // JSON에 정의되지 않은 필드 무시
+            isLenient = true         // 유연한 파싱 허용'
+            explicitNulls = false
+            prettyPrint = true
+        }
+        return json.asConverterFactory("application/json".toMediaType())
     }
 
     @Provides
