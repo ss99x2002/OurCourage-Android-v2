@@ -29,15 +29,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ourcourage.android.domain.User
-import com.example.ourcourage.android.model.ChipState
+import com.example.ourcourage.android.presentation.model.ChipState
 import com.example.ourcourage.android.presentation.ui.component.chip.OurCourageChips
 import com.example.ourcourage.android.ui.theme.BackgroundTransparentWhite
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 import com.example.ourcourage.android.ui.theme.PrimaryBlue
 import com.example.ourcourage.android.ui.theme.StatReturnTypePink
 import com.example.ourcourage.android.ui.theme.StrokeBlue
-import com.patrykandpatrick.vico.core.chart.composed.plus
-import com.patrykandpatrick.vico.core.entry.composed.plus
 
 val chipElements =
     mutableStateListOf(

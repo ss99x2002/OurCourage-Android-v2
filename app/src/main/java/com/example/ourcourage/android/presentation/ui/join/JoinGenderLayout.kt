@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.ourcourage.android.model.ChipState
+import com.example.ourcourage.android.presentation.model.ChipState
 import com.example.ourcourage.android.presentation.ui.component.chip.OurCourageChips
 
 val chipElements =

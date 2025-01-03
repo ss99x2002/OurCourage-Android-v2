@@ -22,6 +22,9 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "API_BASE_URL", "\"base\"")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -39,6 +42,8 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
+        dataBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.15"
@@ -48,10 +53,6 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    buildFeatures {
-        viewBinding = true
-        dataBinding = true
-    }
 }
 
 dependencies {
@@ -60,10 +61,12 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.viewmodel.compose)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.security.crypto)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -72,16 +75,22 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    // 서버 통신
     implementation(libs.bundles.coroutines)
-    implementation(libs.dagger.hilt.android)
     implementation(libs.bundles.okhttp)
     implementation(libs.bundles.retrofit)
+    implementation(libs.bundles.serialization)
+
+    implementation(libs.dagger.hilt.android) // DI
+
     implementation(libs.bundles.coil)
     implementation(libs.androidx.navigation.navigation.compose)
     implementation(libs.androidx.compose.material.meterial)
     implementation(libs.bundles.zxing)
     implementation(libs.androidx.appcompat)
-    implementation(libs.bundles.vico)
+    implementation(libs.bundles.vico) // 그래프 라이브러리
+    implementation(libs.androidx.security)
+    implementation(libs.androidx.security.crypto)
 }
 
 ktlint {

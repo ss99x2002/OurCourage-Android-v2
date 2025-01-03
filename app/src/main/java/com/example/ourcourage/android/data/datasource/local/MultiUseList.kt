@@ -1,4 +1,4 @@
-package com.example.ourcourage.android.data
+package com.example.ourcourage.android.data.datasource.local
 
 import com.example.ourcourage.android.R
 import com.example.ourcourage.android.domain.MultiUse

@@ -3,7 +3,7 @@ package com.example.ourcourage.android.presentation.ui.point.navigation
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import com.example.ourcourage.android.data.MultiUseList
+import com.example.ourcourage.android.data.datasource.local.MultiUseList
 import com.example.ourcourage.android.presentation.ui.navigation.type.BottomNavType
 import com.example.ourcourage.android.presentation.ui.point.PointHistoryScreen
 
