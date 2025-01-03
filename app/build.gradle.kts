@@ -22,6 +22,9 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "API_BASE_URL", "\"base\"")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -39,6 +42,8 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
+        dataBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.15"
@@ -47,10 +52,6 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
-    }
-    buildFeatures {
-        viewBinding = true
-        dataBinding = true
     }
 }
 
