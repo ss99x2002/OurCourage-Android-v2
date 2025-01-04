@@ -9,6 +9,6 @@ data class MyPageUserInfo(
     val currentPoint: Int,
     val totalUseCount: Int,
     val totalReturnCount: Int,
-    val dailyStatisticsResList: List<DailyStatisticsResponseDto>,
-    val monthlyStatisticsResList: List<MonthlyStatisticsResponseDto>
+    val dailyStatisticsResList: List<DailyStatistics>,
+    val monthlyStatisticsResList: List<MonthlyStatistics>
 )
