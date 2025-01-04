@@ -8,9 +8,11 @@ espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.6"
 activityCompose = "1.9.3"
 composeBom = "2024.08.00"
+okhttpBom = "4.10.0"
 coroutines = "1.5.2"
-hilt = "2.38.1"
-okhttp = "4.9.3"
+hilt = "2.46.1"
+hiltNavigationCompose = "1.2.0"
+okhttp = "4.11.0"
 retrofit = "2.9.0"
 coil = "2.7.0"
 composeNavigation = "2.8.3"
@@ -20,10 +22,12 @@ zxingCore = "3.5.3"
 appCompat = "1.7.0"
 vicoChart = "1.12.0"
 composeViewModel = "2.8.7"
-jsonSerialization ="1.5.0"
+jsonSerialization ="1.6.0"
 kotlinSerializationConverter = "1.0.0"
+googleGson = "2.10.1"
 androidSecurity = "1.0.0-alpha04"
 securityCryptoKtx = "1.0.0"
+coilCompose = "2.4.0"
 
 
 [libraries]
@@ -45,10 +49,13 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 dagger-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-navigation-compose = {group = "androidx.hilt", name ="hilt-navigation-compose", version.ref = "hiltNavigationCompose"}
+
 squareup-okhttp3-okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 squareup-okhttp3-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 squareup-retrofit2-retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
-squareup-retrofit2-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+
+
 io-coil-kt-coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 io-coil-kt-coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 androidx-navigation-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavigation" }
@@ -65,11 +72,10 @@ vico-compose-m3 = {group = "com.patrykandpatrick.vico", name ="compose-m3", vers
 vico-core= {group = "com.patrykandpatrick.vico", name ="core", version.ref = "vicoChart"}
 vico-views= {group = "com.patrykandpatrick.vico", name ="views", version.ref = "vicoChart"}
 
-
 viewmodel-compose = {group ="androidx.lifecycle", name= "lifecycle-viewmodel-compose", version.ref= "composeViewModel"}
 
 json-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref  ="jsonSerialization"}
-kotlin-serilization-converter  = {group = "com.jakewharton.retrofit", name= "retrofit2-kotlinx-serialization-converter", version.ref ="kotlinSerializationConverter"}
+kotlin-serialization-converter  = { group = "com.jakewharton.retrofit", name= "retrofit2-kotlinx-serialization-converter", version.ref ="kotlinSerializationConverter"}
 
 androidx-security = { group  = "androidx.security", name = "security-state", version.ref = "androidSecurity"}
 androidx-security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "securityCryptoKtx" }
@@ -77,11 +83,11 @@ androidx-security-crypto = { group = "androidx.security", name = "security-crypt
 [bundles]
 coroutines = ["coroutines-android", "coroutines-core"]
 okhttp = ["squareup-okhttp3-okhttp", "squareup-okhttp3-logging-interceptor"]
-retrofit = ["squareup-retrofit2-converter-gson", "squareup-retrofit2-retrofit"]
+retrofit = [ "squareup-retrofit2-retrofit"]
 vico = ["vico-compose","vico-compose-m3","vico-core","vico-views"]
 zxing = ["zxing-core", "zxing-android-embedded"]
 coil = ["io-coil-kt-coil", "io-coil-kt-coil-compose"]
-serialization = ["json-serialization", "kotlin-serilization-converter"]
+serialization = ["json-serialization", "kotlin-serialization-converter"]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

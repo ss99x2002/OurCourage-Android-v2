@@ -2,6 +2,10 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("org.jlleitschuh.gradle.ktlint") version "12.1.0"
+    id("kotlin-kapt")
+    id ("kotlin-parcelize")
+    id ("org.jetbrains.kotlin.plugin.serialization") version "2.0.21"
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -23,7 +27,8 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "API_BASE_URL", "\"base\"")
+            isMinifyEnabled = false
+            buildConfigField("String", "API_BASE_URL", "\"http://13.124.111.182:8080\"")
         }
         release {
             isMinifyEnabled = false
@@ -81,7 +86,10 @@ dependencies {
     implementation(libs.bundles.retrofit)
     implementation(libs.bundles.serialization)
 
-    implementation(libs.dagger.hilt.android) // DI
+    // DI
+    implementation(libs.dagger.hilt.android)
+    implementation(libs.hilt.navigation.compose)
+    kapt("com.google.dagger:hilt-android-compiler:2.46.1")
 
     implementation(libs.bundles.coil)
     implementation(libs.androidx.navigation.navigation.compose)

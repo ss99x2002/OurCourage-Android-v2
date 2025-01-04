@@ -12,7 +12,9 @@ import com.example.ourcourage.android.presentation.ui.navigation.MainBottomNavig
 import com.example.ourcourage.android.presentation.ui.navigation.MainNavigator
 import com.example.ourcourage.android.presentation.ui.navigation.type.BottomNavType
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
