@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ourcourage.android.domain.model.HomeUserInfo
-import com.example.ourcourage.android.domain.usecase.UserInfoUseCase
+import com.example.ourcourage.android.domain.usecase.HomeUserInfoUseCase
 import com.example.ourcourage.android.util.base.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,14 +15,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val userInfoUseCase: UserInfoUseCase,
+    private val homeUserInfoUseCase: HomeUserInfoUseCase,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow<UiState<HomeUserInfo>>(UiState.Loading)
     val uiState: StateFlow<UiState<HomeUserInfo>> get() = _uiState
 
     fun fetchUserInfo() {
         viewModelScope.launch {
-            userInfoUseCase.invoke().fold(
+            homeUserInfoUseCase.invoke().fold(
                 onSuccess = { userInfo ->
                     _uiState.value = UiState.Success(userInfo)
                 },
