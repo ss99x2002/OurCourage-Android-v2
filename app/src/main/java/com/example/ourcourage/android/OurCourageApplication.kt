@@ -6,7 +6,6 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class OurCourageApplication : Application() {
-
     override fun onCreate() {
         super.onCreate()
         setKakao()
@@ -17,8 +16,7 @@ class OurCourageApplication : Application() {
         // 카카오 sdk 설정
     }
 
-    private fun stopDarkMode(){
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+    private fun stopDarkMode() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
-
 }

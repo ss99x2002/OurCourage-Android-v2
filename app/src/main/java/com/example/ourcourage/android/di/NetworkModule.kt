@@ -20,10 +20,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
     @Provides
     @Singleton
-    fun provideRetrofit(client: OkHttpClient, jsonConverter: Converter.Factory): Retrofit =
+    fun provideRetrofit(
+        client: OkHttpClient,
+        jsonConverter: Converter.Factory,
+    ): Retrofit =
         Retrofit.Builder()
             .baseUrl(com.example.ourcourage.android.BuildConfig.API_BASE_URL)
             .client(client)
@@ -33,12 +35,13 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideJsonConverterFactory(): Converter.Factory {
-        val json = Json {
-            ignoreUnknownKeys = true // JSON에 정의되지 않은 필드 무시
-            isLenient = true         // 유연한 파싱 허용'
-            explicitNulls = false
-            prettyPrint = true
-        }
+        val json =
+            Json {
+                ignoreUnknownKeys = true // JSON에 정의되지 않은 필드 무시
+                isLenient = true // 유연한 파싱 허용'
+                explicitNulls = false
+                prettyPrint = true
+            }
         return json.asConverterFactory("application/json".toMediaType())
     }
 
@@ -46,7 +49,7 @@ object NetworkModule {
     @Singleton
     fun provideHttpClient(
         @LoggingInterceptorQualifier loggingInterceptor: HttpLoggingInterceptor,
-        @AuthInterceptorQualifier authInterceptor: Interceptor
+        @AuthInterceptorQualifier authInterceptor: Interceptor,
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(authInterceptor)
@@ -64,11 +67,12 @@ object NetworkModule {
     @LoggingInterceptorQualifier
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply {
-            level = if (BuildConfig.DEBUG) {
-                HttpLoggingInterceptor.Level.BODY
-            } else {
-                HttpLoggingInterceptor.Level.NONE
-            }
+            level =
+                if (BuildConfig.DEBUG) {
+                    HttpLoggingInterceptor.Level.BODY
+                } else {
+                    HttpLoggingInterceptor.Level.NONE
+                }
         }
     }
 
@@ -79,5 +83,4 @@ object NetworkModule {
     @Qualifier
     @Retention(AnnotationRetention.BINARY)
     annotation class LoggingInterceptorQualifier
-
 }

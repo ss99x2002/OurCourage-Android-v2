@@ -24,14 +24,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.ourcourage.android.R
-import com.example.ourcourage.android.domain.MultiUse
 import com.example.ourcourage.android.domain.model.RentalMultiUse
 
 @Composable
 fun HomeMultiUseHistoryList(
     modifier: Modifier = Modifier,
     list: List<RentalMultiUse> = emptyList(),
-    useCount : Int,
+    useCount: Int,
     onClickMultiUseItem: (String) -> Unit,
 ) {
     Column(modifier) {

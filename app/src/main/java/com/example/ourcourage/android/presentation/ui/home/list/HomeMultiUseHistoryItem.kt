@@ -1,6 +1,5 @@
 package com.example.ourcourage.android.presentation.ui.home.list
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,13 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
-import com.example.ourcourage.android.domain.MultiUse
 import com.example.ourcourage.android.domain.model.RentalMultiUse
 import com.example.ourcourage.android.ui.theme.PrimaryBlue
 import com.example.ourcourage.android.ui.theme.StrokeGrey
@@ -40,17 +36,18 @@ fun HomeMultiUseHistoryItem(
         Row {
             AsyncImage(
                 modifier =
-                Modifier
-                    .padding(12.dp)
-                    .size(45.dp)
-                    .border(
-                        1.dp,
-                        Color(StrokeGrey.value),
-                        shape = RoundedCornerShape(10.dp),
-                    ),
-                model = ImageRequest.Builder(context = LocalContext.current)
-                    .data(multiUse.locationImageUrl)
-                    .build(),
+                    Modifier
+                        .padding(12.dp)
+                        .size(45.dp)
+                        .border(
+                            1.dp,
+                            Color(StrokeGrey.value),
+                            shape = RoundedCornerShape(10.dp),
+                        ),
+                model =
+                    ImageRequest.Builder(context = LocalContext.current)
+                        .data(multiUse.locationImageUrl)
+                        .build(),
                 contentDescription = "multiUseImage",
             )
             Column(

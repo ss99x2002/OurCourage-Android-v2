@@ -22,7 +22,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.ourcourage.android.R
-import com.example.ourcourage.android.domain.User
 import com.example.ourcourage.android.domain.model.MyPageUserInfo
 import com.example.ourcourage.android.presentation.ui.component.OurCourageDefaultButtonComponent
 import com.example.ourcourage.android.presentation.ui.mypage.MyPageViewModel
@@ -32,7 +31,7 @@ fun MyPageProfile(
     modifier: Modifier = Modifier,
     myPageUserInfo: MyPageUserInfo,
     onClickEditButton: () -> Unit = { },
-    myPageViewModel: MyPageViewModel = hiltViewModel()
+    myPageViewModel: MyPageViewModel = hiltViewModel(),
 ) {
     var isEditingNickName by remember { mutableStateOf(false) }
     var nickname by remember { mutableStateOf(myPageUserInfo.nickname) }
@@ -44,21 +43,21 @@ fun MyPageProfile(
             painter = painterResource(id = R.drawable.img_profile),
             contentDescription = "ProfileImage",
             modifier =
-            Modifier
-                .size(60.dp),
+                Modifier
+                    .size(60.dp),
         )
 
         Column(
             modifier =
-            Modifier
-                .padding(start = 8.dp, top = 4.dp),
+                Modifier
+                    .padding(start = 8.dp, top = 4.dp),
             verticalArrangement = Arrangement.Center,
         ) {
             if (isEditingNickName) {
                 MyPageProfileNickNameEditText(
                     modifier = Modifier.width(125.dp),
                     value = nickname,
-                    onValueChange = { nickname = it }
+                    onValueChange = { nickname = it },
                 )
             } else {
                 MyPageProfileNickNameText(
@@ -78,8 +77,8 @@ fun MyPageProfile(
         )
         Box(
             modifier =
-            Modifier
-                .align(Alignment.CenterVertically),
+                Modifier
+                    .align(Alignment.CenterVertically),
         ) {
             OurCourageDefaultButtonComponent(
                 text = if (isEditingNickName) "수정완료" else "로그아웃",

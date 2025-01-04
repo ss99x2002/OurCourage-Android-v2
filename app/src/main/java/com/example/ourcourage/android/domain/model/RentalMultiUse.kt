@@ -9,10 +9,10 @@ data class RentalMultiUse(
     val locationImageUrl: String,
     val useAt: String,
     val status: String,
-    val multiUseContainerId: Int
+    val multiUseContainerId: Int,
 ) {
-    val multiUseContainerType : MultiUseType
+    val multiUseContainerType: MultiUseType
         get() = MultiUseType.fromId(multiUseContainerId)
-    val multiUseContainerStatus : MultiUseStatusType
+    val multiUseContainerStatus: MultiUseStatusType
         get() = MultiUseStatusType.fromType(status)
 }

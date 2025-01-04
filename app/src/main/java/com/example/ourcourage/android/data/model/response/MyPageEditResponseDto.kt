@@ -7,5 +7,5 @@ data class MyPageEditResponseDto(
     val isSuccess: Boolean,
     val code: String,
     val message: String,
-    val result : MyPageEditResultResponseDto
+    val result: MyPageEditResultResponseDto,
 )

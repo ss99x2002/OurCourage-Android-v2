@@ -4,10 +4,12 @@ import com.example.ourcourage.android.data.model.response.MyPageEditResultRespon
 import com.example.ourcourage.android.domain.repository.MyPageRepository
 import javax.inject.Inject
 
-class MyPageEditInfoUseCase @Inject constructor(
-    private val myPageRepository: MyPageRepository
-) {
-    suspend fun invoke(editNickname: String): Result<MyPageEditResultResponseDto> {
-        return myPageRepository.patchUserInfoInMyPage(editNickname)
+class MyPageEditInfoUseCase
+    @Inject
+    constructor(
+        private val myPageRepository: MyPageRepository,
+    ) {
+        suspend fun invoke(editNickname: String): Result<MyPageEditResultResponseDto> {
+            return myPageRepository.patchUserInfoInMyPage(editNickname)
+        }
     }
-}

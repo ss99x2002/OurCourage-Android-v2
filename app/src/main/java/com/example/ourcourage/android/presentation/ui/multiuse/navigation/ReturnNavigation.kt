@@ -14,10 +14,9 @@ fun NavGraphBuilder.returnGraph(
     navigateHome: () -> Unit,
 ) {
     composable(
-        route = ScreenType.MultiUseReturn.route ,
+        route = ScreenType.MultiUseReturn.route,
     ) {
         MultiUseReturnScreen(
-
             multiUse =
                 MultiUse(
                     multiUseContainerId = 1,
@@ -34,7 +33,7 @@ fun NavGraphBuilder.returnGraph(
     }
 }
 
-fun NavHostController.navigateReturn(useAt : String) {
+fun NavHostController.navigateReturn(useAt: String) {
     navigate(
         route = ScreenType.MultiUseReturn.route,
     ) {

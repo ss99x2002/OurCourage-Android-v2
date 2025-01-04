@@ -7,7 +7,6 @@ import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import com.google.zxing.client.android.BuildConfig
 
-
 object UserTokenDataSource {
     private lateinit var preferences: SharedPreferences
     private const val FILE_NAME = "OurCourageLocalDataSource"
@@ -23,12 +22,15 @@ object UserTokenDataSource {
                     masterKeyAlias,
                     context,
                     EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM,
                 )
             }
     }
 
-    fun setKakaoString(key: String, value: String?) {
+    fun setKakaoString(
+        key: String,
+        value: String?,
+    ) {
         preferences.edit { putString(key, value) }
     }
 
@@ -36,7 +38,10 @@ object UserTokenDataSource {
         return preferences.getString(key, null)
     }
 
-    fun setString(key: String, value: String?) {
+    fun setString(
+        key: String,
+        value: String?,
+    ) {
         preferences.edit { putString(key, value) }
     }
 

@@ -8,11 +8,11 @@ data class HomeResultResponseDto(
     @SerialName("userId")
     val userId: Int,
     @SerialName("nickname")
-    val nickname: String?, // nullable 처리
+    val nickname: String?,
     @SerialName("getUseResList")
-    val getUseResList: List<UseResResponseDto> = emptyList(), // 기본값 추가
+    val getUseResList: List<UseResResponseDto> = emptyList(),
     @SerialName("useCount")
     val useCount: Int,
     @SerialName("currentPoint")
-    val currentPoint: Int
+    val currentPoint: Int,
 )

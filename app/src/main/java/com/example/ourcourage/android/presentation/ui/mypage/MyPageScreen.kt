@@ -22,7 +22,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.ourcourage.android.R
-import com.example.ourcourage.android.domain.User
 import com.example.ourcourage.android.presentation.ui.component.OurCourageTopBarText
 import com.example.ourcourage.android.presentation.ui.mypage.counter.MyPageMultiUseCounterLayout
 import com.example.ourcourage.android.presentation.ui.mypage.profile.MyPageProfile
@@ -33,16 +32,15 @@ import com.example.ourcourage.android.util.base.UiState
 @Composable
 fun MyPageScreen(
     modifier: Modifier = Modifier,
-    myPageViewModel: MyPageViewModel = hiltViewModel()
+    myPageViewModel: MyPageViewModel = hiltViewModel(),
 ) {
-
     LaunchedEffect(Unit) {
         myPageViewModel.fetchUserInfo()
     }
 
     val myPageUserInfoUiState by myPageViewModel.myPageUserInfoUiState.collectAsState()
 
-    when(myPageUserInfoUiState) {
+    when (myPageUserInfoUiState) {
         is UiState.Loading -> {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 CircularProgressIndicator()
@@ -56,9 +54,9 @@ fun MyPageScreen(
                     painter = painterResource(R.drawable.img_stat_background),
                     contentDescription = "StatBackground",
                     modifier =
-                    Modifier
-                        .padding(top = 56.dp)
-                        .fillMaxSize(),
+                        Modifier
+                            .padding(top = 56.dp)
+                            .fillMaxSize(),
                 )
                 Column(modifier = modifier) {
                     OurCourageTopBarText(
@@ -69,19 +67,19 @@ fun MyPageScreen(
                         myPageUserInfo = userInfo,
                         onClickEditButton = { },
                         modifier =
-                        Modifier
-                            .padding(24.dp)
-                            .fillMaxWidth()
-                            .wrapContentHeight(),
+                            Modifier
+                                .padding(24.dp)
+                                .fillMaxWidth()
+                                .wrapContentHeight(),
                     )
 
                     MyPageMultiUseCounterLayout(
                         title = "나의 다회용기 이용",
                         myPageUserInfo = userInfo,
                         modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .padding(24.dp),
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(24.dp),
                     )
 
                     MyPageMultiUseStatLayout(
@@ -89,22 +87,20 @@ fun MyPageScreen(
                         dailyStatistics = userInfo.dailyStatisticsResList,
                         monthlyStatistics = userInfo.monthlyStatisticsResList,
                         modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 24.dp, vertical = 18.dp),
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 24.dp, vertical = 18.dp),
                     )
                 }
             }
-
         }
         is UiState.Failure -> {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Log.e("hyeon",  "Error: ${(myPageUserInfoUiState as UiState.Failure).message}")
+                Log.e("hyeon", "Error: ${(myPageUserInfoUiState as UiState.Failure).message}")
                 Text(text = "Error: ${(myPageUserInfoUiState as UiState.Failure).message}", color = Color.Red)
             }
         }
     }
-
 }
 
 @Preview(showBackground = true)

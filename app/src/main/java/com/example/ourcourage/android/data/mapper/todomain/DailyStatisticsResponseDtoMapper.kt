@@ -7,6 +7,6 @@ fun DailyStatisticsResponseDto.toDomain(): DailyStatistics {
     return DailyStatistics(
         dayOfWeek = this.dayOfWeek,
         useCount = this.useCount,
-        returnCount = this.returnCount
+        returnCount = this.returnCount,
     )
 }

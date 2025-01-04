@@ -6,15 +6,16 @@ import com.example.ourcourage.android.data.model.response.MyPageResponseDto
 import com.example.ourcourage.android.data.service.MyPageService
 import javax.inject.Inject
 
-class MyPageRemoteDataSourceImpl @Inject constructor(
-    private val myPageService: MyPageService
-) : MyPageRemoteDataSource {
+class MyPageRemoteDataSourceImpl
+    @Inject
+    constructor(
+        private val myPageService: MyPageService,
+    ) : MyPageRemoteDataSource {
+        override suspend fun fetchMyPageResult(): MyPageResponseDto {
+            return myPageService.fetchUserInfoInMyPage()
+        }
 
-    override suspend fun fetchMyPageResult(): MyPageResponseDto {
-        return myPageService.fetchUserInfoInMyPage()
+        override suspend fun patchUserInfoInMyPage(editNickname: String): MyPageEditResponseDto {
+            return myPageService.patchUserInfoInMyPage(editNickname)
+        }
     }
-
-    override suspend fun patchUserInfoInMyPage(editNickname: String): MyPageEditResponseDto {
-        return myPageService.patchUserInfoInMyPage(editNickname)
-    }
-}

@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 data class MonthlyStatisticsResponseDto(
     val month: Int,
     val useCount: Int,
-    val returnCount: Int
+    val returnCount: Int,
 )
