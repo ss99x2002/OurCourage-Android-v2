@@ -17,12 +17,13 @@ import javax.inject.Singleton
 abstract class DataSourceModule {
     @Binds
     @Singleton
-    abstract fun bindHomeRemoteDataSource(homeRemoteDataSourceImpl: HomeRemoteDataSourceImpl) : HomeRemoteDataSource
+    abstract fun bindHomeRemoteDataSource(homeRemoteDataSourceImpl: HomeRemoteDataSourceImpl): HomeRemoteDataSource
 
     @Binds
     @Singleton
-    abstract fun bindMyPageRemoteDataSource(myPageRemoteDataSourceImpl: MyPageRemoteDataSourceImpl) : MyPageRemoteDataSource
+    abstract fun bindMyPageRemoteDataSource(myPageRemoteDataSourceImpl: MyPageRemoteDataSourceImpl): MyPageRemoteDataSource
+
     @Binds
     @Singleton
-    abstract fun bindPointRemoteDataSource(pointRemoteDataSourceImpl: PointRemoteDataSourceImpl) : PointRemoteDataSource
+    abstract fun bindPointRemoteDataSource(pointRemoteDataSourceImpl: PointRemoteDataSourceImpl): PointRemoteDataSource
 }

@@ -7,6 +7,6 @@ fun MonthlyStatisticsResponseDto.toDomain(): MonthlyStatistics {
     return MonthlyStatistics(
         month = this.month,
         useCount = this.useCount,
-        returnCount = this.returnCount
+        returnCount = this.returnCount,
     )
 }

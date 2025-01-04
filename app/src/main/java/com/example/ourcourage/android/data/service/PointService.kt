@@ -11,6 +11,6 @@ interface PointService {
     @GET("$API/$VERSION/$POINT")
     suspend fun fetchPointHistory(
         @Query("page") page: Int,
-        @Query("size") size: Int
+        @Query("size") size: Int,
     ): PointResponseDto
 }

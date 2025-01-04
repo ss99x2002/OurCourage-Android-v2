@@ -23,7 +23,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.ourcourage.android.domain.User
 import com.example.ourcourage.android.domain.model.MyPageUserInfo
 import com.example.ourcourage.android.ui.theme.BackgroundTransparentWhite
 import com.example.ourcourage.android.ui.theme.PrimaryBlue
@@ -153,6 +152,6 @@ fun MyPageMultiUseCounterLayoutPreview() {
     MyPageMultiUseCounterLayout(
         title = "나의 다회용기 이용",
         modifier = Modifier.wrapContentSize(),
-        myPageUserInfo = MyPageUserInfo("수밍밍", true, 100, 5,5, listOf(), listOf()),
+        myPageUserInfo = MyPageUserInfo("수밍밍", true, 100, 5, 5, listOf(), listOf()),
     )
 }

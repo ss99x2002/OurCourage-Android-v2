@@ -9,12 +9,11 @@ import com.example.ourcourage.android.data.util.Constants.VERSION
 import retrofit2.http.PATCH
 import retrofit2.http.POST
 
-
 // 사용자 인증과 관련된 API 모아둔 서비스 클래스
 interface AuthService {
     @POST("$API/$VERSION/$AUTH/{socialType}/$LOGIN")
     suspend fun postSocialLoginAuth()
 
-    @PATCH ("$API/$VERSION/$USERS/$ADDITIONAL_INFO")
+    @PATCH("$API/$VERSION/$USERS/$ADDITIONAL_INFO")
     suspend fun patchUserAdditionalInfo()
 }

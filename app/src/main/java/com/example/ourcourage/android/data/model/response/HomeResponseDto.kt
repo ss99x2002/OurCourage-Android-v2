@@ -1,7 +1,7 @@
 package com.example.ourcourage.android.data.model.response
 
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class HomeResponseDto(
@@ -12,5 +12,5 @@ data class HomeResponseDto(
     @SerialName("message")
     val message: String,
     @SerialName("result")
-    val result: HomeResultResponseDto
+    val result: HomeResultResponseDto,
 )

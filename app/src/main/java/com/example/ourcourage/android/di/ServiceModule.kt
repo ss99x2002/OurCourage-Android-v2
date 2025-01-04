@@ -12,11 +12,9 @@ import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
-
-@InstallIn(SingletonComponent :: class)
+@InstallIn(SingletonComponent::class)
 @Module
 object ServiceModule {
-
     @Singleton
     @Provides
     fun provideAuthService(retrofit: Retrofit): AuthService =

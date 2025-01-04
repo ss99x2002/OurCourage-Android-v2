@@ -28,7 +28,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.ourcourage.android.domain.User
 import com.example.ourcourage.android.domain.model.DailyStatistics
 import com.example.ourcourage.android.domain.model.MonthlyStatistics
 import com.example.ourcourage.android.presentation.model.ChipState
@@ -38,7 +37,6 @@ import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 import com.example.ourcourage.android.ui.theme.PrimaryBlue
 import com.example.ourcourage.android.ui.theme.StatReturnTypePink
 import com.example.ourcourage.android.ui.theme.StrokeBlue
-import kotlinx.coroutines.selects.select
 
 val chipElements =
     mutableStateListOf(
@@ -54,7 +52,7 @@ fun MyPageMultiUseStatLayout(
     modifier: Modifier = Modifier,
     title: String,
     dailyStatistics: List<DailyStatistics>,
-    monthlyStatistics: List<MonthlyStatistics>
+    monthlyStatistics: List<MonthlyStatistics>,
 ) {
     var selectedGraphType by remember { mutableStateOf("주별") }
 
@@ -62,28 +60,28 @@ fun MyPageMultiUseStatLayout(
         Text(
             text = title,
             modifier =
-            Modifier.padding(
-                bottom = 12.dp,
-            ),
+                Modifier.padding(
+                    bottom = 12.dp,
+                ),
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
         )
         Card(
             modifier =
-            Modifier
-                .fillMaxWidth(),
+                Modifier
+                    .fillMaxWidth(),
             colors = CardDefaults.cardColors(BackgroundTransparentWhite),
             border =
-            BorderStroke(1.dp, Color(StrokeBlue.value)),
+                BorderStroke(1.dp, Color(StrokeBlue.value)),
         ) {
             Row(modifier = Modifier.padding(top = 12.dp)) {
                 OurCourageChips(
                     elements = chipElements,
                     modifier =
-                    Modifier
-                        .width(200.dp)
-                        .height(48.dp)
-                        .align(Alignment.CenterVertically),
+                        Modifier
+                            .width(200.dp)
+                            .height(48.dp)
+                            .align(Alignment.CenterVertically),
                     onChipClick = { text, _, chipIndex ->
                         chipElements.forEachIndexed { index, chipState ->
                             chipState.isSelected.value = (index == chipIndex)
@@ -91,19 +89,19 @@ fun MyPageMultiUseStatLayout(
                         selectedGraphType = text
                     },
                     chipModifier =
-                    Modifier
-                        .padding(horizontal = 12.dp)
-                        .height(30.dp)
-                        .width(80.dp)
-                        .align(Alignment.CenterVertically),
+                        Modifier
+                            .padding(horizontal = 12.dp)
+                            .height(30.dp)
+                            .width(80.dp)
+                            .align(Alignment.CenterVertically),
                     chipFontSize = 12,
                 )
 
                 Column(
                     modifier =
-                    Modifier
-                        .align(Alignment.CenterVertically)
-                        .padding(start = 32.dp),
+                        Modifier
+                            .align(Alignment.CenterVertically)
+                            .padding(start = 32.dp),
                 ) {
                     MyPageMultiUseStatType(
                         typeColor = Color(PrimaryBlue.value),
@@ -119,15 +117,15 @@ fun MyPageMultiUseStatLayout(
 
             MyPageMultiUseStatGraph(
                 modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .height(400.dp)
-                    .padding(top = 8.dp),
+                    Modifier
+                        .fillMaxWidth()
+                        .height(400.dp)
+                        .padding(top = 8.dp),
                 colorList = listOf(PrimaryBlue, StatReturnTypePink),
                 dailyStatistics = dailyStatistics,
                 monthlyStatistics = monthlyStatistics,
                 isMonthlySelected = selectedGraphType == "월별",
-                bottomAxisLabels = getBottomAxisLabels(selectedGraphType)
+                bottomAxisLabels = getBottomAxisLabels(selectedGraphType),
             )
         }
     }
@@ -141,22 +139,22 @@ fun MyPageMultiUseStatType(
     Row {
         Box(
             modifier =
-            Modifier
-                .background(
-                    color = typeColor,
-                    shape = CircleShape,
-                )
-                .size(8.dp)
-                .align(Alignment.CenterVertically),
+                Modifier
+                    .background(
+                        color = typeColor,
+                        shape = CircleShape,
+                    )
+                    .size(8.dp)
+                    .align(Alignment.CenterVertically),
         )
 
         Text(
             text = type,
             fontSize = 12.sp,
             modifier =
-            Modifier
-                .padding(start = 4.dp)
-                .align(Alignment.CenterVertically),
+                Modifier
+                    .padding(start = 4.dp)
+                    .align(Alignment.CenterVertically),
             color = Color.Black,
         )
     }
@@ -181,9 +179,9 @@ fun MyPageMultiUseStatLayoutPreview() {
             dailyStatistics = listOf(),
             monthlyStatistics = listOf(),
             modifier =
-            Modifier
-                .fillMaxWidth()
-                .wrapContentHeight(),
+                Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight(),
         )
     }
 }

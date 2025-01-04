@@ -6,12 +6,17 @@ import com.example.ourcourage.android.domain.model.PointHistory
 import com.example.ourcourage.android.domain.repository.PointRepository
 import javax.inject.Inject
 
-class PointRepositoryImpl @Inject constructor(
-    private val pointRemoteDataSource: PointRemoteDataSource
-) : PointRepository {
-    override suspend fun fetchPointHistory(page: Int, size: Int): Result<PointHistory> {
-        return runCatching {
-            pointRemoteDataSource.fetchPointHistory(page, size).result.toDomain()
+class PointRepositoryImpl
+    @Inject
+    constructor(
+        private val pointRemoteDataSource: PointRemoteDataSource,
+    ) : PointRepository {
+        override suspend fun fetchPointHistory(
+            page: Int,
+            size: Int,
+        ): Result<PointHistory> {
+            return runCatching {
+                pointRemoteDataSource.fetchPointHistory(page, size).result.toDomain()
+            }
         }
     }
-}

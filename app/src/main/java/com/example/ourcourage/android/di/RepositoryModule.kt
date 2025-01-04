@@ -15,11 +15,9 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
-
     @Binds
     @Singleton
     abstract fun bindHomeRepository(homeRepositoryImpl: HomeRepositoryImpl): HomeRepository
-
 
     @Binds
     @Singleton
@@ -28,5 +26,4 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindPointRepository(pointRepositoryImpl: PointRepositoryImpl): PointRepository
-
 }

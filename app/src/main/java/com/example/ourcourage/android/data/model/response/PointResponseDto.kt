@@ -7,5 +7,5 @@ data class PointResponseDto(
     val isSuccess: Boolean,
     val code: String,
     val message: String,
-    val result: PointResultResponseDto
+    val result: PointResultResponseDto,
 )

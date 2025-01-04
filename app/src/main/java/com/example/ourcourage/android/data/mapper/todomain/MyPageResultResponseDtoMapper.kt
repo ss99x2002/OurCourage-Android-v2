@@ -10,7 +10,7 @@ fun MyPageResultResponseDto.toDomain(): MyPageUserInfo {
         currentPoint = this.currentPoint,
         totalUseCount = this.totalUseCount,
         totalReturnCount = this.totalReturnCount,
-        dailyStatisticsResList = this.dailyStatisticsResList.map { it.toDomain()},
-        monthlyStatisticsResList = this.monthlyStatisticsResList.map {it.toDomain()}
+        dailyStatisticsResList = this.dailyStatisticsResList.map { it.toDomain() },
+        monthlyStatisticsResList = this.monthlyStatisticsResList.map { it.toDomain() },
     )
 }

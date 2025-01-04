@@ -2,7 +2,6 @@ package com.example.ourcourage.android.data.mapper.todomain
 
 import com.example.ourcourage.android.data.model.response.PointContentResponseDto
 import com.example.ourcourage.android.domain.model.PointContent
-import com.example.ourcourage.android.domain.model.PointHistory
 
 fun PointContentResponseDto.toDomain(): PointContent {
     return PointContent(
@@ -13,6 +12,6 @@ fun PointContentResponseDto.toDomain(): PointContent {
         returnLocationName = this.returnLocationName,
         returnLocationAddress = this.returnLocationAddress,
         rentalLocationAddress = this.rentalLocationAddress,
-        rentalLocationName = this.rentalLocationName
+        rentalLocationName = this.rentalLocationName,
     )
 }

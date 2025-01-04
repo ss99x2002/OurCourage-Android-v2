@@ -10,6 +10,6 @@ fun UseResResponseDto.toDomain(): RentalMultiUse {
         locationImageUrl = this.locationImageUrl,
         useAt = this.useAt,
         status = this.status,
-        multiUseContainerId = this.multiUseContainerId
+        multiUseContainerId = this.multiUseContainerId,
     )
 }

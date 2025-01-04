@@ -41,9 +41,8 @@ import com.example.ourcourage.android.util.base.UiState
 fun PointHistoryScreen(
     modifier: Modifier = Modifier.fillMaxSize(),
     multiUseList: List<MultiUse>,
-    pointViewModel: PointViewModel = hiltViewModel()
+    pointViewModel: PointViewModel = hiltViewModel(),
 ) {
-
     LaunchedEffect(Unit) {
         pointViewModel.fetchPointHistory()
     }
@@ -55,7 +54,6 @@ fun PointHistoryScreen(
         val uiState by pointViewModel.pointHistoryUiState.collectAsState()
 
         when (uiState) {
-
             is UiState.Loading -> {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     CircularProgressIndicator()
@@ -66,19 +64,21 @@ fun PointHistoryScreen(
                 val pointHistory = (uiState as UiState.Success).data
                 PointHistoryList(
                     pointHistoryList = pointHistory.content,
-                    modifier = Modifier
-                        .padding(horizontal = 20.dp)
-                        .fillMaxWidth()
-                        .height(640.dp)
+                    modifier =
+                        Modifier
+                            .padding(horizontal = 20.dp)
+                            .fillMaxWidth()
+                            .height(640.dp),
                 )
 
                 // 페이지네이션 처리 (Load More 버튼 추가)
                 if (!pointHistory.last) {
                     Button(
                         onClick = { pointViewModel.fetchPointHistory(loadMore = true) },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp)
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp),
                     ) {
                         Text("더 보기")
                     }
@@ -109,8 +109,8 @@ fun PointHistoryList(
             PointHistoryItem(
                 pointContent = content,
                 modifier =
-                Modifier
-                    .fillMaxSize(),
+                    Modifier
+                        .fillMaxSize(),
             )
         }
     }
@@ -124,10 +124,10 @@ fun PointHistoryBackgroundImage(modifier: Modifier = Modifier) {
             painter = painterResource(R.drawable.img_return_complete_top_coin_background),
             contentDescription = "ReturnTopCoinBackgroundImage",
             modifier =
-            Modifier
-                .wrapContentWidth()
-                .background(Color.Transparent)
-                .height(450.dp),
+                Modifier
+                    .wrapContentWidth()
+                    .background(Color.Transparent)
+                    .height(450.dp),
             contentScale = ContentScale.Crop,
             alignment = Alignment.TopStart,
         )
@@ -137,11 +137,11 @@ fun PointHistoryBackgroundImage(modifier: Modifier = Modifier) {
             painter = painterResource(R.drawable.img_return_complete_bottom_coin_background),
             contentDescription = "ReturnTopCoinBackgroundImage",
             modifier =
-            Modifier
-                .wrapContentWidth()
-                .background(Color.Transparent)
-                .height(490.dp)
-                .align(Alignment.BottomEnd),
+                Modifier
+                    .wrapContentWidth()
+                    .background(Color.Transparent)
+                    .height(490.dp)
+                    .align(Alignment.BottomEnd),
             contentScale = ContentScale.Crop,
         )
     }

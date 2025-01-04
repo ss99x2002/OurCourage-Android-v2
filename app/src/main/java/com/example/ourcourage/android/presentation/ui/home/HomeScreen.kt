@@ -21,7 +21,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.ourcourage.android.R
-import com.example.ourcourage.android.data.datasource.local.MultiUseList.multiUseList
 import com.example.ourcourage.android.presentation.ui.component.OurCourageTopBarText
 import com.example.ourcourage.android.presentation.ui.home.list.HomeMultiUseHistoryList
 import com.example.ourcourage.android.ui.theme.BackgroundBlue
@@ -32,7 +31,7 @@ import com.example.ourcourage.android.util.base.UiState
 fun HomeScreen(
     modifier: Modifier = Modifier,
     onClickMultiUseItem: (String) -> Unit,
-    homeViewModel: HomeViewModel = hiltViewModel()
+    homeViewModel: HomeViewModel = hiltViewModel(),
 ) {
     LaunchedEffect(Unit) {
         homeViewModel.fetchUserInfo()
@@ -40,7 +39,7 @@ fun HomeScreen(
 
     val uiState by homeViewModel.uiState.collectAsState()
 
-    when(uiState) {
+    when (uiState) {
         is UiState.Loading -> {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 CircularProgressIndicator()
@@ -48,7 +47,6 @@ fun HomeScreen(
         }
 
         is UiState.Success -> {
-
             val userInfo = (uiState as UiState.Success).data
 
             Column(modifier = modifier.background(Color(BackgroundBlue.value))) {
@@ -61,35 +59,33 @@ fun HomeScreen(
                 HomeMultiUseTopTitle(
                     text = "${userInfo.nickname}님의",
                     modifier =
-                    Modifier
-                        .padding(horizontal = 24.dp, vertical = 12.dp)
-                        .fillMaxWidth(),
+                        Modifier
+                            .padding(horizontal = 24.dp, vertical = 12.dp)
+                            .fillMaxWidth(),
                 )
 
                 HomeMultiUseHistoryList(
                     list = userInfo.rentalContainers,
                     modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 24.dp)
-                        .wrapContentHeight(),
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 24.dp)
+                            .wrapContentHeight(),
                     onClickMultiUseItem = { useAt ->
                         onClickMultiUseItem(useAt)
-                    }
-                    ,
-                    useCount = userInfo.useCount
+                    },
+                    useCount = userInfo.useCount,
                 )
             }
         }
 
         is UiState.Failure -> {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Log.e("hyeon",  "Error: ${(uiState as UiState.Failure).message}")
+                Log.e("hyeon", "Error: ${(uiState as UiState.Failure).message}")
                 Text(text = "Error: ${(uiState as UiState.Failure).message}", color = Color.Red)
             }
         }
     }
-
 }
 
 @Preview(showBackground = true, showSystemUi = true)

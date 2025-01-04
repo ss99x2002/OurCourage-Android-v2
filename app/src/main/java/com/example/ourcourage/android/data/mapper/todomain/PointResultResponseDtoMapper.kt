@@ -13,6 +13,6 @@ fun PointResultResponseDto.toDomain(): PointHistory {
         number = this.number,
         sort = this.sort,
         numberOfElements = this.numberOfElements,
-        empty = this.empty
+        empty = this.empty,
     )
 }

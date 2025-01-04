@@ -16,5 +16,5 @@ data class UseResResponseDto(
     @SerialName("status")
     val status: String,
     @SerialName("multiUseContainerId")
-    val multiUseContainerId: Int
+    val multiUseContainerId: Int,
 )

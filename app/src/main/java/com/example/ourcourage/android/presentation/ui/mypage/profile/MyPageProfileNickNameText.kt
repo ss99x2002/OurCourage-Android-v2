@@ -14,7 +14,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ourcourage.android.R
-import com.example.ourcourage.android.domain.User
 import com.example.ourcourage.android.domain.model.MyPageUserInfo
 
 @Composable

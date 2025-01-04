@@ -8,7 +8,7 @@ import com.example.ourcourage.android.presentation.ui.component.OurCourageTextFi
 fun MyPageProfileNickNameEditText(
     value: String,
     modifier: Modifier = Modifier,
-    onValueChange : (String) -> Unit,
+    onValueChange: (String) -> Unit,
 ) {
     OurCourageTextField(
         value = value,
