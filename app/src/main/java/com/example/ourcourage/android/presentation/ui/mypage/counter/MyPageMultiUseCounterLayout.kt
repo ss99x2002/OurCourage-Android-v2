@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ourcourage.android.domain.User
+import com.example.ourcourage.android.domain.model.MyPageUserInfo
 import com.example.ourcourage.android.ui.theme.BackgroundTransparentWhite
 import com.example.ourcourage.android.ui.theme.PrimaryBlue
 import com.example.ourcourage.android.ui.theme.StrokeBlue
@@ -33,7 +34,7 @@ import com.example.ourcourage.android.ui.theme.StrokeGrey
 fun MyPageMultiUseCounterLayout(
     modifier: Modifier = Modifier,
     title: String,
-    user: User,
+    myPageUserInfo: MyPageUserInfo,
 ) {
     Column(modifier = modifier) {
         Text(
@@ -47,7 +48,7 @@ fun MyPageMultiUseCounterLayout(
         )
 
         MyPageMultiUseCounterCardView(
-            user = user,
+            myPageUserInfo = myPageUserInfo,
             modifier =
                 Modifier
                     .wrapContentHeight()
@@ -59,7 +60,7 @@ fun MyPageMultiUseCounterLayout(
 @Composable
 fun MyPageMultiUseCounterCardView(
     modifier: Modifier = Modifier,
-    user: User,
+    myPageUserInfo: MyPageUserInfo,
 ) {
     Card(
         modifier = modifier,
@@ -76,7 +77,7 @@ fun MyPageMultiUseCounterCardView(
         ) {
             MyPageMultiUseCounterText(
                 title = "현재 포인트",
-                content = "1000p",
+                content = "${myPageUserInfo.currentPoint}p",
                 textModifier = Modifier.padding(top = 4.dp),
                 modifier = Modifier.weight(1f),
             )
@@ -91,7 +92,7 @@ fun MyPageMultiUseCounterCardView(
 
             MyPageMultiUseCounterText(
                 title = "대여 횟수",
-                content = "8회",
+                content = "${myPageUserInfo.totalUseCount}회",
                 modifier = Modifier.weight(1f),
             )
 
@@ -105,7 +106,7 @@ fun MyPageMultiUseCounterCardView(
 
             MyPageMultiUseCounterText(
                 title = "반납 횟수",
-                content = "5회",
+                content = "${myPageUserInfo.totalReturnCount}회",
                 modifier = Modifier.weight(1f),
             )
         }
@@ -152,6 +153,6 @@ fun MyPageMultiUseCounterLayoutPreview() {
     MyPageMultiUseCounterLayout(
         title = "나의 다회용기 이용",
         modifier = Modifier.wrapContentSize(),
-        user = User("수밍밍이", true),
+        myPageUserInfo = MyPageUserInfo("수밍밍", true, 100, 5,5, listOf(), listOf()),
     )
 }

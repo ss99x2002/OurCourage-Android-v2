@@ -11,9 +11,7 @@ fun NavGraphBuilder.myPageGraph() {
     composable(
         route = BottomNavType.MyPage.route,
     ) {
-        MyPageScreen(
-            user = User("수밍밍이", true),
-        )
+        MyPageScreen()
     }
 }
 
