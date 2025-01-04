@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("org.jlleitschuh.gradle.ktlint") version "12.1.0"
     id("kotlin-kapt")
+    id ("kotlin-parcelize")
+    id ("org.jetbrains.kotlin.plugin.serialization") version "2.0.21"
     id("com.google.dagger.hilt.android")
 }
 
@@ -25,7 +27,8 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "API_BASE_URL", "\"http://13.124.111.182:8080/\"")
+            isMinifyEnabled = false
+            buildConfigField("String", "API_BASE_URL", "\"http://13.124.111.182:8080\"")
         }
         release {
             isMinifyEnabled = false
