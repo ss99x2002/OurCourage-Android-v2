@@ -1,5 +1,6 @@
 package com.example.ourcourage.android.domain.model
 
+import com.example.ourcourage.android.presentation.type.MultiUseStatusType
 import com.example.ourcourage.android.presentation.type.MultiUseType
 
 data class RentalMultiUse(
@@ -12,4 +13,6 @@ data class RentalMultiUse(
 ) {
     val multiUseContainerType : MultiUseType
         get() = MultiUseType.fromId(multiUseContainerId)
+    val multiUseContainerStatus : MultiUseStatusType
+        get() = MultiUseStatusType.fromType(status)
 }
