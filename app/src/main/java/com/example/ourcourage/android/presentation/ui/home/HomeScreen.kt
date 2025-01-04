@@ -34,6 +34,10 @@ fun HomeScreen(
     onClickMultiUseItem: (String) -> Unit,
     homeViewModel: HomeViewModel = hiltViewModel()
 ) {
+    LaunchedEffect(Unit) {
+        homeViewModel.fetchUserInfo()
+    }
+
     val uiState by homeViewModel.uiState.collectAsState()
 
     when(uiState) {
@@ -84,10 +88,6 @@ fun HomeScreen(
                 Text(text = "Error: ${(uiState as UiState.Failure).message}", color = Color.Red)
             }
         }
-    }
-
-    LaunchedEffect(Unit) {
-        homeViewModel.fetchUserInfo()
     }
 
 }

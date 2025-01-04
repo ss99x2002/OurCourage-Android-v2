@@ -1,6 +1,6 @@
 package com.example.ourcourage.android.domain.model
 
-data class UserInfo(
+data class HomeUserInfo(
     val userId: Int,
     val nickname: String?,
     val useCount: Int,

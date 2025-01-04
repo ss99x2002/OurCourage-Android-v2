@@ -1,8 +1,7 @@
 package com.example.ourcourage.android.domain.repository
 
-import com.example.ourcourage.android.domain.model.RentalMultiUse
-import com.example.ourcourage.android.domain.model.UserInfo
+import com.example.ourcourage.android.domain.model.HomeUserInfo
 
 interface HomeRepository {
-    suspend fun fetchUserInfoInHome() : Result<UserInfo>
+    suspend fun fetchUserInfoInHome() : Result<HomeUserInfo>
 }

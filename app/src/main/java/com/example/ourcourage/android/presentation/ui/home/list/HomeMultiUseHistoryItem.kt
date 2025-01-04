@@ -38,16 +38,16 @@ fun HomeMultiUseHistoryItem(
         colors = CardDefaults.cardColors(Color.White),
     ) {
         Row {
-          AsyncImage(
+            AsyncImage(
                 modifier =
-                    Modifier
-                        .padding(12.dp)
-                        .size(45.dp)
-                        .border(
-                            1.dp,
-                            Color(StrokeGrey.value),
-                            shape = RoundedCornerShape(10.dp),
-                        ),
+                Modifier
+                    .padding(12.dp)
+                    .size(45.dp)
+                    .border(
+                        1.dp,
+                        Color(StrokeGrey.value),
+                        shape = RoundedCornerShape(10.dp),
+                    ),
                 model = ImageRequest.Builder(context = LocalContext.current)
                     .data(multiUse.locationImageUrl)
                     .build(),
@@ -59,13 +59,13 @@ fun HomeMultiUseHistoryItem(
             ) {
                 Row {
                     Text(
-                        text = "다회용기 ${multiUse.multiUseContainerType.name}",
+                        text = "다회용기 ${multiUse.multiUseContainerType.multiUseName}",
                         modifier = Modifier.padding(end = 8.dp),
                         color = Color.Black,
                         fontSize = 12.sp,
                     )
                     Text(
-                        text = multiUse.status,
+                        text = multiUse.multiUseContainerStatus.statusName,
                         color = Color(PrimaryBlue.value),
                         fontSize = 12.sp,
                     )

@@ -1,10 +1,10 @@
 package com.example.ourcourage.android.data.mapper.todomain
 
 import com.example.ourcourage.android.data.model.response.HomeResultResponseDto
-import com.example.ourcourage.android.domain.model.UserInfo
+import com.example.ourcourage.android.domain.model.HomeUserInfo
 
-fun HomeResultResponseDto.toDomain() : UserInfo {
-    return UserInfo(
+fun HomeResultResponseDto.toDomain() : HomeUserInfo {
+    return HomeUserInfo(
         userId = this.userId,
         nickname = this.nickname,
         useCount = this.useCount,
