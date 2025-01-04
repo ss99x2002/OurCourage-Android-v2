@@ -6,7 +6,7 @@ object Constants {
     const val VERSION = "v1"
     const val USES = "uses"
     const val LOCATION = "location"
-    const val POINT = "point"
+    const val POINT = "points"
     const val USERS = "users"
     const val AUTH ="auth"
     const val LOGIN = "login"
