@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ourcourage.android.data.model.response.MyPageEditResultResponseDto
-import com.example.ourcourage.android.domain.model.HomeUserInfo
+import com.example.ourcourage.android.util.handleApiError
 import com.example.ourcourage.android.domain.model.MyPageUserInfo
 import com.example.ourcourage.android.domain.usecase.MyPageEditInfoUseCase
 import com.example.ourcourage.android.domain.usecase.MyPageUserInfoUseCase
@@ -54,11 +54,8 @@ class MyPageViewModel @Inject constructor(
                     fetchUserInfo() // 닉네임 수정 후 최신정보 가져오는 로직 추가
                 },
                 onFailure = { error ->
-                    if (error is HttpException) {
-                        val errorBody = error.response()?.errorBody()?.string()
-                        Log.e("hyeon", "http 연결 실패 $errorBody")
-                    }
-                    Log.e("hyeon", "실패 ${error.message}")
+                    error.handleApiError(tag = "hyeon")
+                    _myPageUserInfoUiState.value = UiState.Failure(error.message)
                 }
             )
         }
