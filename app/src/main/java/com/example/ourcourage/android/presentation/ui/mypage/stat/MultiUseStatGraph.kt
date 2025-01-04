@@ -11,6 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
+import com.example.ourcourage.android.domain.model.DailyStatistics
+import com.example.ourcourage.android.domain.model.MonthlyStatistics
 import com.patrykandpatrick.vico.compose.axis.horizontal.rememberBottomAxis
 import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
 import com.patrykandpatrick.vico.compose.chart.Chart
@@ -34,28 +36,35 @@ import com.patrykandpatrick.vico.core.entry.entryOf
 fun MyPageMultiUseStatGraph(
     modifier: Modifier = Modifier,
     colorList: List<Color>,
-    bottomAxisLabels: List<String>,
-    rentalData: List<Int>,
-    returnData: List<Int>,
+    dailyStatistics: List<DailyStatistics>,
+    monthlyStatistics: List<MonthlyStatistics>,
+    isMonthlySelected: Boolean,
+    bottomAxisLabels : List<String>
 ) {
     Column(modifier = modifier.fillMaxWidth()) {
         ProvideChartStyle(rememberChartStyle(colorList)) {
             // 그래프 모델 생성
-            val rentalChartModel = createChartModel(rentalData)
-            val returnChartModel = createChartModel(returnData)
+            val rentalChartModel = createChartModel(
+                if (isMonthlySelected) monthlyStatistics.map { it.useCount }
+                else dailyStatistics.map { it.useCount }
+            )
+            val returnChartModel = createChartModel(
+                if (isMonthlySelected) monthlyStatistics.map { it.returnCount }
+                else dailyStatistics.map { it.returnCount }
+            )
 
             // 그래프 표시
             Chart(
                 modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .height(300.dp)
-                        .padding(horizontal = 8.dp, vertical = 8.dp),
+                Modifier
+                    .fillMaxWidth()
+                    .height(300.dp)
+                    .padding(horizontal = 8.dp, vertical = 8.dp),
                 chart = createColumnChart(),
                 chartModelProducer =
-                    ComposedChartEntryModelProducer(
-                        rentalChartModel.plus(returnChartModel),
-                    ),
+                ComposedChartEntryModelProducer(
+                    rentalChartModel.plus(returnChartModel),
+                ),
                 startAxis = createStartAxis(),
                 bottomAxis = createBottomAxis(bottomAxisLabels),
                 runInitialAnimation = true,
@@ -73,23 +82,23 @@ fun rememberChartStyle(columnChartColors: List<Color>): ChartStyle {
     return remember(columnChartColors, isDarkTheme) {
         ChartStyle(
             axis =
-                ChartStyle.Axis(
-                    axisLabelColor = Color(defaultColors.axisLabelColor),
-                    axisGuidelineColor = Color(defaultColors.axisGuidelineColor),
-                    axisLineColor = Color(defaultColors.axisLineColor),
-                ),
+            ChartStyle.Axis(
+                axisLabelColor = Color(defaultColors.axisLabelColor),
+                axisGuidelineColor = Color(defaultColors.axisGuidelineColor),
+                axisLineColor = Color(defaultColors.axisLineColor),
+            ),
             columnChart =
-                ChartStyle.ColumnChart(
-                    columns =
-                        columnChartColors.map { color ->
-                            LineComponent(
-                                color = color.toArgb(),
-                                thicknessDp = 25f,
-                                shape = Shapes.cutCornerShape(topLeftPercent = 20, topRightPercent = 20),
-                            )
-                        },
-                    dataLabel = TextComponent.Builder().build(),
-                ),
+            ChartStyle.ColumnChart(
+                columns =
+                columnChartColors.map { color ->
+                    LineComponent(
+                        color = color.toArgb(),
+                        thicknessDp = 25f,
+                        shape = Shapes.cutCornerShape(topLeftPercent = 20, topRightPercent = 20),
+                    )
+                },
+                dataLabel = TextComponent.Builder().build(),
+            ),
             lineChart = ChartStyle.LineChart(lines = emptyList()),
             marker = ChartStyle.Marker(),
             elevationOverlayColor = Color(defaultColors.elevationOverlayColor),

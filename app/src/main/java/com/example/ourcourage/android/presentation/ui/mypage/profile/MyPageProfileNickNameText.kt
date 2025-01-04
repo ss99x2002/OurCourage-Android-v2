@@ -15,16 +15,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ourcourage.android.R
 import com.example.ourcourage.android.domain.User
+import com.example.ourcourage.android.domain.model.MyPageUserInfo
 
 @Composable
 fun MyPageProfileNickNameText(
     modifier: Modifier = Modifier,
-    user: User,
+    myPageUserInfo: MyPageUserInfo,
     onClickEditButton: () -> Unit = { },
 ) {
     Row(modifier = modifier) {
         Text(
-            "${user.nickName}님",
+            "${myPageUserInfo.nickname}님",
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(end = 4.dp),

@@ -29,6 +29,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ourcourage.android.domain.User
+import com.example.ourcourage.android.domain.model.DailyStatistics
+import com.example.ourcourage.android.domain.model.MonthlyStatistics
 import com.example.ourcourage.android.presentation.model.ChipState
 import com.example.ourcourage.android.presentation.ui.component.chip.OurCourageChips
 import com.example.ourcourage.android.ui.theme.BackgroundTransparentWhite
@@ -36,15 +38,13 @@ import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
 import com.example.ourcourage.android.ui.theme.PrimaryBlue
 import com.example.ourcourage.android.ui.theme.StatReturnTypePink
 import com.example.ourcourage.android.ui.theme.StrokeBlue
+import kotlinx.coroutines.selects.select
 
 val chipElements =
     mutableStateListOf(
         ChipState("주별", mutableStateOf(true)),
         ChipState("월별", mutableStateOf(false)),
     )
-
-val rentalList = listOf(5, 8, 12, 7, 10, 14, 9, 12, 3, 4, 5, 3)
-val returnList = listOf(1, 3, 5, 7, 1, 3, 5, 2, 3, 1, 7, 3)
 
 val week = listOf("월", "화", "수", "목", "금", "토", "일")
 val month = listOf("1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월")
@@ -53,7 +53,8 @@ val month = listOf("1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월
 fun MyPageMultiUseStatLayout(
     modifier: Modifier = Modifier,
     title: String,
-    user: User,
+    dailyStatistics: List<DailyStatistics>,
+    monthlyStatistics: List<MonthlyStatistics>
 ) {
     var selectedGraphType by remember { mutableStateOf("주별") }
 
@@ -61,48 +62,48 @@ fun MyPageMultiUseStatLayout(
         Text(
             text = title,
             modifier =
-                Modifier.padding(
-                    bottom = 12.dp,
-                ),
+            Modifier.padding(
+                bottom = 12.dp,
+            ),
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
         )
         Card(
             modifier =
-                Modifier
-                    .fillMaxWidth(),
+            Modifier
+                .fillMaxWidth(),
             colors = CardDefaults.cardColors(BackgroundTransparentWhite),
             border =
-                BorderStroke(1.dp, Color(StrokeBlue.value)),
+            BorderStroke(1.dp, Color(StrokeBlue.value)),
         ) {
             Row(modifier = Modifier.padding(top = 12.dp)) {
                 OurCourageChips(
                     elements = chipElements,
                     modifier =
-                        Modifier
-                            .width(200.dp)
-                            .height(48.dp)
-                            .align(Alignment.CenterVertically),
+                    Modifier
+                        .width(200.dp)
+                        .height(48.dp)
+                        .align(Alignment.CenterVertically),
                     onChipClick = { text, _, chipIndex ->
                         chipElements.forEachIndexed { index, chipState ->
                             chipState.isSelected.value = (index == chipIndex)
                         }
-                        selectedGraphType = text // 이 부분은 ViewModel로 개선 할 수 있다. StateFlow로 구독 형식.
+                        selectedGraphType = text
                     },
                     chipModifier =
-                        Modifier
-                            .padding(horizontal = 12.dp)
-                            .height(30.dp)
-                            .width(80.dp)
-                            .align(Alignment.CenterVertically),
+                    Modifier
+                        .padding(horizontal = 12.dp)
+                        .height(30.dp)
+                        .width(80.dp)
+                        .align(Alignment.CenterVertically),
                     chipFontSize = 12,
                 )
 
                 Column(
                     modifier =
-                        Modifier
-                            .align(Alignment.CenterVertically)
-                            .padding(start = 32.dp),
+                    Modifier
+                        .align(Alignment.CenterVertically)
+                        .padding(start = 32.dp),
                 ) {
                     MyPageMultiUseStatType(
                         typeColor = Color(PrimaryBlue.value),
@@ -118,14 +119,15 @@ fun MyPageMultiUseStatLayout(
 
             MyPageMultiUseStatGraph(
                 modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .height(400.dp)
-                        .padding(top = 8.dp),
+                Modifier
+                    .fillMaxWidth()
+                    .height(400.dp)
+                    .padding(top = 8.dp),
                 colorList = listOf(PrimaryBlue, StatReturnTypePink),
-                bottomAxisLabels = getBottomAxisLabels(selectedGraphType),
-                rentalData = rentalList,
-                returnData = returnList,
+                dailyStatistics = dailyStatistics,
+                monthlyStatistics = monthlyStatistics,
+                isMonthlySelected = selectedGraphType == "월별",
+                bottomAxisLabels = getBottomAxisLabels(selectedGraphType)
             )
         }
     }
@@ -139,28 +141,30 @@ fun MyPageMultiUseStatType(
     Row {
         Box(
             modifier =
-                Modifier
-                    .background(
-                        color = typeColor,
-                        shape = CircleShape,
-                    )
-                    .size(8.dp)
-                    .align(Alignment.CenterVertically),
+            Modifier
+                .background(
+                    color = typeColor,
+                    shape = CircleShape,
+                )
+                .size(8.dp)
+                .align(Alignment.CenterVertically),
         )
 
         Text(
             text = type,
             fontSize = 12.sp,
             modifier =
-                Modifier
-                    .padding(start = 4.dp)
-                    .align(Alignment.CenterVertically),
+            Modifier
+                .padding(start = 4.dp)
+                .align(Alignment.CenterVertically),
             color = Color.Black,
         )
     }
 }
 
-fun getBottomAxisLabels(selectedType: String): List<String> {
+fun getBottomAxisLabels(
+    selectedType: String,
+): List<String> {
     return when (selectedType) {
         "주별" -> week
         "월별" -> month
@@ -174,11 +178,12 @@ fun MyPageMultiUseStatLayoutPreview() {
     OurCourageAndroidv2Theme {
         MyPageMultiUseStatLayout(
             title = "나의 다회용기 통계",
-            user = User("수밍밍이", true),
+            dailyStatistics = listOf(),
+            monthlyStatistics = listOf(),
             modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight(),
+            Modifier
+                .fillMaxWidth()
+                .wrapContentHeight(),
         )
     }
 }
