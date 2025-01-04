@@ -24,7 +24,7 @@ class AuthInterceptor @Inject constructor() : Interceptor {
     }
 
     private fun Request.newAuthBuilder(token: String): Request =
-        if ("".contains(url.host)) {
+        if (BuildConfig.API_BASE_URL.contains(url.host)) {
             this.newBuilder()
                 .addHeader("Authorization", token)
                 .build()
