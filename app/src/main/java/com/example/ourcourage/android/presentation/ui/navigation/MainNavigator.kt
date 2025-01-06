@@ -19,7 +19,6 @@ import com.example.ourcourage.android.presentation.ui.scan.navigation.navigateSc
 import com.example.ourcourage.android.presentation.ui.scan.navigation.navigateScanComplete
 import com.example.ourcourage.android.presentation.ui.scan.navigation.scanCompleteGraph
 import com.example.ourcourage.android.presentation.ui.scan.navigation.scanGraph
-import com.example.ourcourage.android.presentation.ui.scan.type.ScanPurpose
 
 @Composable
 fun MainNavigator(
