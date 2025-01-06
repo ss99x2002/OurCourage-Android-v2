@@ -48,7 +48,7 @@ fun MultiUseRentalScreen(
             MultiUseRentalLocationMapLayout(
                 title = "대여장소",
                 titleIconRes = R.drawable.ic_location_pin,
-                locationName = locationInfo.locationName + locationInfo.locationAddress,
+                locationInfo = locationInfo,
                 modifier =
                 Modifier
                     .padding(horizontal = 24.dp),

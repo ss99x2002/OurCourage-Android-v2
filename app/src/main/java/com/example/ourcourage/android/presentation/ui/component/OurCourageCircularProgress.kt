@@ -16,7 +16,8 @@ fun OurCourageCircularProgress(
 ) {
     Box(modifier = modifier, contentAlignment = contentAlignment) {
         CircularProgressIndicator(
-            backgroundColor = progressColor
+            color = progressColor,
+            backgroundColor = Color.Transparent
         )
     }
 }
