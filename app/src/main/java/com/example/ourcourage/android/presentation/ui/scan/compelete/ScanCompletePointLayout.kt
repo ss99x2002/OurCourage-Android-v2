@@ -57,7 +57,7 @@ fun ScanCompletePointLayout(
         )
 
         Text(
-            text = "장소 : ${multiUse.locationName + multiUse.locationAddress}",
+            text = "장소 : ${multiUse.locationName} ${multiUse.locationAddress}",
             fontSize = 16.sp,
             modifier =
             Modifier
