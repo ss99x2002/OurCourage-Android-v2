@@ -25,7 +25,7 @@
 - Retrofit, OkHttp
 - Kotlin Serialization, Moshi
 - Coroutine, Flow
-- Coil,Naver Map, Zxing
+- Coil(Image), Naver Map(Map), Zxing(QR Code), Vico(Graph)
 - Hilt
 - UiState
 - Github Action (CI : Ktlint / CD)
