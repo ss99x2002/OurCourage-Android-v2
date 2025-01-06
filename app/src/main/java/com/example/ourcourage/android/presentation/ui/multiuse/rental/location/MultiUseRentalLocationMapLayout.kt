@@ -23,6 +23,7 @@ fun MultiUseRentalLocationMapLayout(
     title: String,
     titleIconRes: Int,
     modifier: Modifier = Modifier,
+    locationName : String,
 ) {
     Column(modifier = modifier.fillMaxWidth()) {
         Row {
@@ -45,7 +46,7 @@ fun MultiUseRentalLocationMapLayout(
         }
 
         Text(
-            text = "블루포트 공덕역점",
+            text = locationName,
             fontSize = 14.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(bottom = 8.dp),
