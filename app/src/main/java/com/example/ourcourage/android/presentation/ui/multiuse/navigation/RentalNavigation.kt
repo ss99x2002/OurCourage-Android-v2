@@ -16,14 +16,12 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.ourcourage.android.domain.mapper.toDto
-import com.example.ourcourage.android.domain.mapper.toJson
 import com.example.ourcourage.android.domain.model.RentalDetail
 import com.example.ourcourage.android.domain.model.RentalLocationInfo
 import com.example.ourcourage.android.domain.model.toJson
-import com.example.ourcourage.android.presentation.ui.multiuse.MultiUseViewModel
+import com.example.ourcourage.android.presentation.ui.multiuse.rental.RentalViewModel
 import com.example.ourcourage.android.presentation.ui.multiuse.rental.MultiUseRentalScreen
 import com.example.ourcourage.android.presentation.ui.navigation.type.ScreenType
-import com.example.ourcourage.android.presentation.ui.scan.type.ScanPurpose
 import com.example.ourcourage.android.util.base.UiState
 import java.net.URLEncoder
 
@@ -40,7 +38,7 @@ fun NavGraphBuilder.rentalGraph(
     ) { backStackEntry ->
 
         val rentalLocationInfo = backStackEntry.arguments?.getString("rentalLocationInfo")?.toDto<RentalLocationInfo>()
-        val viewModel: MultiUseViewModel = hiltViewModel()
+        val viewModel: RentalViewModel = hiltViewModel()
         val rentalUiState by viewModel.rentalUiState.collectAsState()
 
         rentalLocationInfo?.let {

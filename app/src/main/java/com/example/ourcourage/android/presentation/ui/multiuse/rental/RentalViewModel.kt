@@ -1,4 +1,4 @@
-package com.example.ourcourage.android.presentation.ui.multiuse
+package com.example.ourcourage.android.presentation.ui.multiuse.rental
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MultiUseViewModel @Inject constructor(
+class RentalViewModel @Inject constructor(
     private val rentalMultiUseUseCase: RentalMultiUseUseCase
 ) : ViewModel() {
 

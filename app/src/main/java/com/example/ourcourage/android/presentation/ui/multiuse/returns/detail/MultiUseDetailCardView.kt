@@ -26,6 +26,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ourcourage.android.R
 import com.example.ourcourage.android.domain.MultiUse
+import com.example.ourcourage.android.domain.model.RentalMultiUse
+import com.example.ourcourage.android.domain.model.ReturnDetail
 import com.example.ourcourage.android.presentation.ui.multiuse.returns.type.MultiUseDetailCardType
 import com.example.ourcourage.android.ui.theme.ButtonBlue
 import com.example.ourcourage.android.ui.theme.PrimaryBlue
@@ -34,7 +36,7 @@ import com.example.ourcourage.android.ui.theme.PrimaryBlue
 fun MultiUseDetailCareView(
     modifier: Modifier = Modifier,
     title: String,
-    multiUse: MultiUse,
+    multiUse: ReturnDetail,
     type: MultiUseDetailCardType,
 ) {
     Card(
@@ -93,9 +95,11 @@ fun MultiUseDetailCareView(
                         painter =
                             painterResource(
                                 when (multiUse.multiUseContainerId) {
-                                    1 -> R.drawable.ic_launcher_background
-                                    2 -> R.drawable.img_multiuse_rental_top_background
-                                    else -> R.drawable.img_dummy_map
+                                    1 -> R.drawable.ic_cup
+                                    2 -> R.drawable.ic_bowl
+                                    3 -> R.drawable.ic_lunch_box
+                                    4 -> R.drawable.ic_untensils
+                                    else -> R.drawable.ic_launcher_background
                                 },
                             ),
                         contentDescription = "MultiUseContainerImage",

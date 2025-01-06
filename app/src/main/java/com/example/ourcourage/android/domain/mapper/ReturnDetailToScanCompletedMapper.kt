@@ -1,9 +1,10 @@
 package com.example.ourcourage.android.domain.mapper
 
 import com.example.ourcourage.android.domain.model.ReturnDetail
+import com.example.ourcourage.android.domain.model.ReturnMultiUse
 import com.example.ourcourage.android.domain.model.ScanCompletedContent
 
-fun ReturnDetail.toScanComplete() : ScanCompletedContent {
+fun ReturnMultiUse.toScanComplete() : ScanCompletedContent {
     return ScanCompletedContent(
         point =  this.acquiredPoint.toInt(),
         locationName = this.returnLocationName,
