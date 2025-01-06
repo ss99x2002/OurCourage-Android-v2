@@ -29,6 +29,7 @@ android {
         debug {
             isMinifyEnabled = false
             buildConfigField("String", "API_BASE_URL", "\"http://13.124.111.182:8080\"")
+            buildConfigField("String", "NAVER_MAP_CLIENT_ID", "\"bgznyzk90j\"")
         }
         release {
             isMinifyEnabled = false
@@ -39,11 +40,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     buildFeatures {
         compose = true
@@ -73,6 +74,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.security.crypto)
     implementation(libs.androidx.benchmark.common)
+    implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -103,6 +105,10 @@ dependencies {
 
     // Moshi
     implementation(libs.bundles.moshi)
+
+    //Naver Map
+    implementation(libs.naver.map.compose)
+    implementation(libs.naver.map.location)
 }
 
 ktlint {
