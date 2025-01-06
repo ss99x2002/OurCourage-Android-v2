@@ -25,11 +25,11 @@
 - Retrofit, OkHttp
 - Kotlin Serialization, Moshi
 - Coroutine, Flow
-- Coil
-- Naver Map, Zxing
+- Coil,Naver Map, Zxing
 - Hilt
 - UiState
 - Github Action (CI : Ktlint / CD)
+- Version Catalog
 
 <div id="3"></div>
 
