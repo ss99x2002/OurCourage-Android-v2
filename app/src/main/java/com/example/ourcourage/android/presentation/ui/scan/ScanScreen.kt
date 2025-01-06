@@ -15,7 +15,7 @@ import com.journeyapps.barcodescanner.DefaultDecoderFactory
 @Composable
 fun QrCodeScanScreen(
     modifier: Modifier,
-    onSuccessQrScan: () -> Unit,
+    onSuccessQrScan:(String) -> Unit,
 ) {
     val context = LocalContext.current
     AndroidView(
@@ -24,16 +24,14 @@ fun QrCodeScanScreen(
                 DecoratedBarcodeView(ctx).apply {
                     setDecoderFactory(DefaultDecoderFactory(listOf(BarcodeFormat.QR_CODE)))
                     resume() // 카메라 시작
-
                     decodeContinuous(
                         object : BarcodeCallback {
                             override fun barcodeResult(result: BarcodeResult) {
                                 // QR 코드가 인식되었을 때의 처리 로직
-                                onSuccessQrScan()
+                                onSuccessQrScan(result.toString())
                                 Toast.makeText(context, "스캔된 QR 코드: ${result.result.text}", Toast.LENGTH_SHORT).show()
                                 pause() // 스캔 후 일시 정지 (필요 시)
                             }
-
                             override fun possibleResultPoints(resultPoints: List<ResultPoint>) {}
                         },
                     )

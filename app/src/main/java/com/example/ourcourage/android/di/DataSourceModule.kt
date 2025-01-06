@@ -1,9 +1,11 @@
 package com.example.ourcourage.android.di
 
 import com.example.ourcourage.android.data.datasource.remote.HomeRemoteDataSource
+import com.example.ourcourage.android.data.datasource.remote.MultiUseRemoteDataSource
 import com.example.ourcourage.android.data.datasource.remote.MyPageRemoteDataSource
 import com.example.ourcourage.android.data.datasource.remote.PointRemoteDataSource
 import com.example.ourcourage.android.data.datasource.remote.impl.HomeRemoteDataSourceImpl
+import com.example.ourcourage.android.data.datasource.remote.impl.MultiUseRemoteDataSourceImpl
 import com.example.ourcourage.android.data.datasource.remote.impl.MyPageRemoteDataSourceImpl
 import com.example.ourcourage.android.data.datasource.remote.impl.PointRemoteDataSourceImpl
 import dagger.Binds
@@ -26,4 +28,8 @@ abstract class DataSourceModule {
     @Binds
     @Singleton
     abstract fun bindPointRemoteDataSource(pointRemoteDataSourceImpl: PointRemoteDataSourceImpl): PointRemoteDataSource
+
+    @Binds
+    @Singleton
+    abstract fun bindMultiUseRemoteDataSource(multiUseRemoteDataSourceImpl: MultiUseRemoteDataSourceImpl): MultiUseRemoteDataSource
 }

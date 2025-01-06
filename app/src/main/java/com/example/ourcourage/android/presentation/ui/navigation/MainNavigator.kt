@@ -34,15 +34,15 @@ fun MainNavigator(
         homeGraph(navigateReturn = { useAt -> navController.navigateReturn(useAt) })
         pointGraph()
         myPageGraph()
-        rentalGraph(navigateScanCompleted = { navController.navigateScanComplete() })
+        rentalGraph(navigateScanCompleted = { type, response -> navController.navigateScanComplete(type = type, response = response) })
         returnGraph(
             navigateHome = { navController.navigateHome() },
             navigateScan = { navController.navigateScan(ScanPurpose.RETURN) },
         )
         scanCompleteGraph(navigateHome = { navController.navigateHome() })
         scanGraph(
-            navigateRental = { navController.navigateRental() },
-            navigateScanCompleted = { navController.navigateScanComplete() },
+            navigateRental = { locationInfo -> navController.navigateRental(locationInfo) },
+            navigateScanCompleted = { type, response ->  navController.navigateScanComplete(type = type, response = response) },
         )
     }
 }

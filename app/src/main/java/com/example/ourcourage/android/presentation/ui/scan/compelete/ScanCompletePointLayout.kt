@@ -19,65 +19,66 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.ourcourage.android.domain.MultiUse
+import com.example.ourcourage.android.domain.model.ScanCompletedContent
 import com.example.ourcourage.android.presentation.ui.component.OurCourageDefaultButtonComponent
 import com.example.ourcourage.android.ui.theme.StrokeBlue
 
 @Composable
-fun MultiUseReturnPointLayout(
+fun ScanCompletePointLayout(
     modifier: Modifier,
-    multiUse: MultiUse,
+    isReturn: Boolean,
+    multiUse: ScanCompletedContent,
     onClickHomeButton: () -> Unit,
 ) {
     Column(
         modifier =
-            modifier
-                .fillMaxWidth()
-                .fillMaxHeight(0.74f)
-                .background(Color.White)
-                .border(
-                    width = 1.dp,
-                    color = Color(StrokeBlue.value),
-                    shape = RoundedCornerShape(10.dp),
-                )
-                .clip(RoundedCornerShape(10.dp)),
+        modifier
+            .fillMaxWidth()
+            .fillMaxHeight(0.74f)
+            .background(Color.White)
+            .border(
+                width = 1.dp,
+                color = Color(StrokeBlue.value),
+                shape = RoundedCornerShape(10.dp),
+            )
+            .clip(RoundedCornerShape(10.dp)),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
-            text = "적립",
-            fontSize = 48.sp,
+            text = if (isReturn) "적립" else "대여",
+            fontSize = 32.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(top = 56.dp),
         )
         Text(
-            text = "100" + "p",
-            fontSize = 48.sp,
+            text = if (isReturn) "${multiUse.point}p" else "완료",
+            fontSize = 32.sp,
             fontWeight = FontWeight.Bold,
         )
 
         Text(
             text = "장소 : ${multiUse.locationName + multiUse.locationAddress}",
-            fontSize = 18.sp,
+            fontSize = 16.sp,
             modifier =
-                Modifier
-                    .align(Alignment.Start)
-                    .padding(start = 24.dp, end = 24.dp, top = 52.dp),
+            Modifier
+                .align(Alignment.Start)
+                .padding(start = 24.dp, end = 24.dp, top = 52.dp),
         )
         Text(
             text = "인증 일시 : ${multiUse.useAt}",
-            fontSize = 18.sp,
+            fontSize = 16.sp,
             modifier =
-                Modifier
-                    .align(Alignment.Start)
-                    .padding(horizontal = 24.dp),
+            Modifier
+                .align(Alignment.Start)
+                .padding(horizontal = 24.dp),
         )
         Text(
-            text = "누적 포인트 : ${multiUse.point}p",
-            fontSize = 18.sp,
+            text = if (isReturn) "누적 포인트 : ${multiUse.point}p" else "대여 다회용기 종류 : ${multiUse.multiUseContainerType.multiUseName}",
+            fontSize = 16.sp,
             modifier =
-                Modifier
-                    .align(Alignment.Start)
-                    .padding(horizontal = 24.dp),
+            Modifier
+                .align(Alignment.Start)
+                .padding(horizontal = 24.dp),
         )
 
         Spacer(modifier = Modifier.weight(1f))
@@ -86,10 +87,10 @@ fun MultiUseReturnPointLayout(
             text = "홈으로",
             onClick = onClickHomeButton,
             modifier =
-                Modifier
-                    .wrapContentHeight()
-                    .width(120.dp)
-                    .padding(bottom = 48.dp),
+            Modifier
+                .wrapContentHeight()
+                .width(120.dp)
+                .padding(bottom = 48.dp),
             isEnabled = true,
         )
     }
