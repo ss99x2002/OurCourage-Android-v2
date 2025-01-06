@@ -1,12 +1,15 @@
 package com.example.ourcourage.android.domain.model
 
+import com.example.ourcourage.android.data.model.response.MultiUseReturnResListResponseDto
+import kotlinx.serialization.SerialName
+
 data class ReturnDetail(
-    val returnLocationId: Long,
-    val returnLocationName: String,
-    val returnLocationAddress: String,
-    val returnTime: String,
-    val currentPoint: Long,
-    val acquiredPoint: Long,
-    val userId: Long,
-    val status: String,
+    val rentalLocationId: Int,
+    val locationImageUrl: String,
+    val locationName: String,
+    val locationAddress: String,
+    val useAt: String,
+    val point: Int,
+    val multiUseContainerId: Int,
+    val getReturnResList: List<ReturnLocationInfo>,
 )

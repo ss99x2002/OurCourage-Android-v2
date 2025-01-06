@@ -6,7 +6,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavBackStackEntry
@@ -16,65 +18,92 @@ import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.ourcourage.android.R
-import com.example.ourcourage.android.data.model.request.MultiUseLocationRequestDto
-import com.example.ourcourage.android.domain.MultiUse
 import com.example.ourcourage.android.domain.mapper.toDto
 import com.example.ourcourage.android.domain.mapper.toJson
 import com.example.ourcourage.android.domain.mapper.toScanComplete
 import com.example.ourcourage.android.domain.model.RentalDetail
 import com.example.ourcourage.android.domain.model.RentalLocationInfo
 import com.example.ourcourage.android.domain.model.RentalMultiUse
-import com.example.ourcourage.android.domain.model.ReturnDetail
+import com.example.ourcourage.android.domain.model.ReturnMultiUse
+import com.example.ourcourage.android.presentation.ui.component.OurCourageCircularProgress
+import com.example.ourcourage.android.presentation.ui.component.OurCourageErrorBox
 import com.example.ourcourage.android.presentation.ui.navigation.type.BottomNavType
 import com.example.ourcourage.android.presentation.ui.navigation.type.ScreenType
 import com.example.ourcourage.android.presentation.ui.scan.QrCodeScanScreen
 import com.example.ourcourage.android.presentation.ui.scan.ScanViewModel
 import com.example.ourcourage.android.presentation.ui.scan.compelete.ScanCompleteScreen
 import com.example.ourcourage.android.presentation.ui.scan.type.ScanPurpose
+import com.example.ourcourage.android.ui.theme.PrimaryBlue
 import com.example.ourcourage.android.util.base.UiState
-import com.google.zxing.client.android.Intents.Scan
 import java.net.URLEncoder
 
 fun NavGraphBuilder.scanGraph(
     navigateRental: (RentalLocationInfo) -> Unit,
-    navigateScanCompleted: (String,Any) -> Unit,
+    navigateScanCompleted: (String, Any) -> Unit,
 ) {
     composable(
-        route = BottomNavType.Scan.route,
+        route = "scan/{scanPurpose}/{useAt}",
         arguments =
         listOf(
             navArgument("scanPurpose") {
                 type = NavType.StringType
+                defaultValue = "RENTAL"
+            },
+            navArgument("useAt") {
+                type = NavType.StringType
+                defaultValue = "default"
             }
         ),
     ) { backStackEntry ->
 
         val viewModel: ScanViewModel = hiltViewModel()
         val scanPurpose = getScanPurposeArg(backStackEntry)
-        val scanUiState by viewModel.scanUiState.collectAsState()
+        val scanRentalUiState by viewModel.scanUiState.collectAsState()
+        val scanReturnUiState by viewModel.returnUiState.collectAsState()
 
         QrCodeScanScreen(
             modifier = Modifier.fillMaxSize(),
             onSuccessQrScan = { qrCodeResult ->
-                viewModel.scanQrCodeResult(qrCodeResult, scanPurpose)
+                viewModel.scanQrCodeResult(qrCodeResult, scanPurpose, getUseAt(backStackEntry))
             },
         )
 
-        navigateScanPurposeRental(
-            scanUiState = scanUiState,
-            scanPurpose = scanPurpose,
-            navigateRental = navigateRental,
-        )
+        when (scanPurpose) {
+            ScanPurpose.RENTAL -> {
+                navigateScanPurposeRental(
+                    scanUiState = scanRentalUiState,
+                    scanPurpose = scanPurpose,
+                    navigateRental = navigateRental,
+                )
+            }
+
+            ScanPurpose.RETURN -> {
+                navigateScanPurPoseReturn(
+                    returnUiState = scanReturnUiState,
+                    navigateScanCompleted = navigateScanCompleted
+                )
+            }
+        }
     }
 }
 
+fun NavHostController.navigateScan(scanPurpose: String = "RENTAL", useAt: String = "default") {
+    navigate(
+        route = "scan/$scanPurpose/$useAt"
+    )
+}
+
+
 fun getScanPurposeArg(backStackEntry: NavBackStackEntry): ScanPurpose {
-    val scanPurposeArg = backStackEntry.arguments?.getString("scanPurpose")
+    val scanPurposeArg = backStackEntry.arguments?.getString("scanPurpose") ?: ""
     return when (scanPurposeArg) {
         "RETURN" -> ScanPurpose.RETURN
         else -> ScanPurpose.RENTAL
     }
+}
+
+fun getUseAt(backStackEntry: NavBackStackEntry): String {
+    return backStackEntry.arguments?.getString("useAt") ?: ""
 }
 
 
@@ -85,6 +114,15 @@ private fun navigateScanPurposeRental(
     navigateRental: (RentalLocationInfo) -> Unit,
 ) {
     when (scanUiState) {
+
+        is UiState.Loading -> {
+            OurCourageCircularProgress(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center,
+                progressColor = Color(PrimaryBlue.value)
+            )
+        }
+
         is UiState.Success -> {
             if (scanPurpose == ScanPurpose.RENTAL) {
                 scanUiState.data?.let {
@@ -98,14 +136,38 @@ private fun navigateScanPurposeRental(
             Toast.makeText(LocalContext.current, errorMessage, Toast.LENGTH_SHORT).show()
         }
 
-        else -> Unit
     }
 }
 
-fun NavHostController.navigateScan(scanPurpose: ScanPurpose) {
-    navigate(
-        route = BottomNavType.Scan.route.replace("{scanPurpose}", scanPurpose.name),
-    )
+
+@Composable
+private fun navigateScanPurPoseReturn(
+    returnUiState: UiState<ReturnMultiUse>,
+    navigateScanCompleted: (String, Any) -> Unit,
+) {
+    when (returnUiState) {
+        is UiState.Loading -> {
+            OurCourageCircularProgress(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center,
+                progressColor = Color(PrimaryBlue.value)
+            )
+        }
+
+        is UiState.Success -> {
+            returnUiState.data?.let {
+                navigateScanCompleted("RETURN", it)
+            }
+        }
+
+        is UiState.Failure -> {
+            OurCourageErrorBox(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center,
+                errorMessage = returnUiState.message.toString()
+            )
+        }
+    }
 }
 
 fun NavGraphBuilder.scanCompleteGraph(
@@ -121,23 +183,23 @@ fun NavGraphBuilder.scanCompleteGraph(
         val response = backStackEntry.arguments?.getString("response")
         val type = backStackEntry.arguments?.getString("type")
 
-        val responseToPass = if (type ==  "RENTAL") {
+        val responseToPass = if (type == "RENTAL") {
             response?.toDto<RentalDetail>()?.toScanComplete()
         } else {
-            response?.toDto<ReturnDetail>()?.toScanComplete()
+            response?.toDto<ReturnMultiUse>()?.toScanComplete()
         }
         ScanCompleteScreen(
             content = responseToPass!!,
             onClickHomeButton = navigateHome,
             isReturn = type == "RETURN",
-            topTitleText = if(type == "RETURN") "인증 완료" else "대여 완료"
+            topTitleText = if (type == "RETURN") "인증 완료" else "대여 완료"
         )
     }
 }
 
 fun NavHostController.navigateScanComplete(
     type: String,
-    response : Any,
+    response: Any,
 ) {
     val encodedJson = URLEncoder.encode(response.toJson(), "UTF-8")
     navigate(

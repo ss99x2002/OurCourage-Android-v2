@@ -21,10 +21,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.ourcourage.android.R
+import com.example.ourcourage.android.presentation.ui.component.OurCourageCircularProgress
 import com.example.ourcourage.android.presentation.ui.component.OurCourageTopBarText
 import com.example.ourcourage.android.presentation.ui.home.list.HomeMultiUseHistoryList
 import com.example.ourcourage.android.ui.theme.BackgroundBlue
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
+import com.example.ourcourage.android.ui.theme.PrimaryBlue
 import com.example.ourcourage.android.util.base.UiState
 
 @Composable
@@ -41,9 +43,11 @@ fun HomeScreen(
 
     when (uiState) {
         is UiState.Loading -> {
-            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                CircularProgressIndicator()
-            }
+            OurCourageCircularProgress(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center,
+                progressColor = Color(PrimaryBlue.value)
+            )
         }
 
         is UiState.Success -> {
@@ -59,18 +63,18 @@ fun HomeScreen(
                 HomeMultiUseTopTitle(
                     text = "${userInfo.nickname}님의",
                     modifier =
-                        Modifier
-                            .padding(horizontal = 24.dp, vertical = 12.dp)
-                            .fillMaxWidth(),
+                    Modifier
+                        .padding(horizontal = 24.dp, vertical = 12.dp)
+                        .fillMaxWidth(),
                 )
 
                 HomeMultiUseHistoryList(
                     list = userInfo.rentalContainers,
                     modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 24.dp)
-                            .wrapContentHeight(),
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 24.dp)
+                        .wrapContentHeight(),
                     onClickMultiUseItem = { useAt ->
                         onClickMultiUseItem(useAt)
                     },

@@ -15,11 +15,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.example.ourcourage.android.domain.MultiUse
+import com.example.ourcourage.android.domain.model.RentalDetail
+import com.example.ourcourage.android.domain.model.RentalLocationInfo
+import com.example.ourcourage.android.domain.model.RentalMultiUse
+import com.example.ourcourage.android.domain.model.ReturnDetail
 import com.example.ourcourage.android.presentation.ui.multiuse.returns.type.MultiUseDetailCardType
 import com.example.ourcourage.android.ui.theme.ButtonBlue
 
@@ -27,7 +34,7 @@ import com.example.ourcourage.android.ui.theme.ButtonBlue
 fun MultiUseDetailLayout(
     modifier: Modifier = Modifier,
     title: String,
-    multiUse: MultiUse,
+    multiUse: ReturnDetail,
 ) {
     Column(modifier = modifier) {
         Text(
@@ -43,8 +50,11 @@ fun MultiUseDetailLayout(
                     .wrapContentHeight()
                     .padding(top = 16.dp),
         ) {
-            Image(
-                painter = painterResource(multiUse.locationImageUrl),
+            AsyncImage(
+                model =
+                ImageRequest.Builder(context = LocalContext.current)
+                    .data(multiUse.locationImageUrl)
+                    .build(),
                 contentDescription = "MultiUseRentalCafeImage",
                 modifier =
                     Modifier
@@ -95,7 +105,7 @@ fun MultiUseDetailLayout(
 @Composable
 fun MultiUseDetailCardViews(
     modifier: Modifier = Modifier,
-    multiUse: MultiUse,
+    multiUse: ReturnDetail,
 ) {
     Row(
         modifier = modifier,

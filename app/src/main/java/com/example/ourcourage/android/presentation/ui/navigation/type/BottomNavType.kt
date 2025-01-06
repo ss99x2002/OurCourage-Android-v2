@@ -24,7 +24,7 @@ sealed class BottomNavType(
     )
 
     data object Scan : BottomNavType(
-        route = "scan/{scanPurpose}",
+        route = "scan/{scanPurpose}/{useAt}",
         resourceId = R.string.camera,
         icon = R.drawable.ic_bottom_camera,
     )

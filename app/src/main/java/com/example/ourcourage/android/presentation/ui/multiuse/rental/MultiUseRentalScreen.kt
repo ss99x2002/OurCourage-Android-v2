@@ -1,8 +1,6 @@
 package com.example.ourcourage.android.presentation.ui.multiuse.rental
 
-import android.util.Log
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -15,40 +13,29 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavBackStackEntry
 import com.example.ourcourage.android.R
 import com.example.ourcourage.android.data.model.request.MultiUseRentalRequestDto
 import com.example.ourcourage.android.domain.model.RentalLocationInfo
 import com.example.ourcourage.android.presentation.ui.component.OurCourageDefaultButtonComponent
 import com.example.ourcourage.android.presentation.ui.component.OurCourageTopBarText
-import com.example.ourcourage.android.presentation.ui.multiuse.MultiUseViewModel
 import com.example.ourcourage.android.presentation.ui.multiuse.rental.choice.MultiUseRentalChoiceLayout
 import com.example.ourcourage.android.presentation.ui.multiuse.rental.location.MultiUseRentalLocationMapLayout
-import com.example.ourcourage.android.presentation.ui.scan.ScanViewModel
-import com.example.ourcourage.android.ui.theme.BackgroundBlue
 import com.example.ourcourage.android.ui.theme.OurCourageAndroidv2Theme
-import com.example.ourcourage.android.util.base.UiState
 
 @Composable
 fun MultiUseRentalScreen(
     modifier: Modifier = Modifier,
     onClickRental: (MultiUseRentalRequestDto) -> Unit,
     locationInfo: RentalLocationInfo,
-    multiUseViewModel: MultiUseViewModel = hiltViewModel()
+    rentalViewModel: RentalViewModel = hiltViewModel()
 ) {
     Box(modifier = modifier.fillMaxSize()) {
         Column(
@@ -82,7 +69,7 @@ fun MultiUseRentalScreen(
                     .padding(horizontal = 32.dp, vertical = 16.dp),
                 availableMultiUseOptions = locationInfo.availableMultiUseType,
                 onSelectionChanged = { selectedOption ->
-                    multiUseViewModel.updateSelectedOption(selectedOption.id)
+                    rentalViewModel.updateSelectedOption(selectedOption.id)
                 }
             )
 
@@ -101,7 +88,7 @@ fun MultiUseRentalScreen(
                     isEnabled = true,
                     text = "다회용기 대여하기",
                     onClick = {
-                        val selectedOption = multiUseViewModel.selectedOptionIndex.value
+                        val selectedOption = rentalViewModel.selectedOptionIndex.value
                         onClickRental(
                             MultiUseRentalRequestDto(
                                 selectedOption,

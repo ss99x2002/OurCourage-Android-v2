@@ -15,6 +15,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.ourcourage.android.MainActivity.Companion.items
+import com.example.ourcourage.android.presentation.ui.navigation.type.BottomNavType
 import com.example.ourcourage.android.ui.theme.PrimaryBlue
 import com.example.ourcourage.android.ui.theme.StrokeGrey
 
@@ -33,15 +34,20 @@ fun MainBottomNavigation(navController: NavController) {
                 },
                 selected = currentRoute == screen.route,
                 colors =
-                    NavigationBarItemDefaults.colors(
-                        selectedTextColor = PrimaryBlue,
-                        unselectedTextColor = StrokeGrey,
-                        selectedIconColor = PrimaryBlue,
-                        unselectedIconColor = StrokeGrey,
-                        indicatorColor = Color.White,
-                    ),
+                NavigationBarItemDefaults.colors(
+                    selectedTextColor = PrimaryBlue,
+                    unselectedTextColor = StrokeGrey,
+                    selectedIconColor = PrimaryBlue,
+                    unselectedIconColor = StrokeGrey,
+                    indicatorColor = Color.White,
+                ),
                 onClick = {
-                    navController.navigate(screen.route) {
+                    val route = if (screen is BottomNavType.Scan) {
+                        "scan/RENTAL/default"
+                    } else {
+                        screen.route
+                    }
+                    navController.navigate(route) {
                         popUpTo(navController.graph.findStartDestination().id) {
                             saveState = true
                             // 시작 목적지로 팝업
