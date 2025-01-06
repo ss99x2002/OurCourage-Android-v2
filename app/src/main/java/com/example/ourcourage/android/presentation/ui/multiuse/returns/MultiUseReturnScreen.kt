@@ -103,6 +103,7 @@ fun MultiUseReturnScreen(
                             .padding(top = 24.dp, start = 24.dp, end = 24.dp, bottom = 24.dp),
                         title = "반납 가능 장소",
                         titleIconRes = R.drawable.ic_location_pin,
+                        returnLocationList = multiUse.getReturnResList
                     )
 
                     // 반납 버튼
