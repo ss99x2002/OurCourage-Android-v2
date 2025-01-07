@@ -28,14 +28,15 @@
 - Coil(Image), Naver Map(Map), Zxing(QR Code), Vico(Graph)
 - Hilt
 - UiState
+- ViewModel, Navigation 
 - Github Action (CI : Ktlint / CD)
 - Version Catalog
 
 <div id="3"></div>
 
 ## 주요 기능
-| <img width="150px" src="https://s4.ezgif.com/tmp/ezgif-4-1aa1e17139.gif"/> | <img width="150px" src="https://s4.ezgif.com/tmp/ezgif-4-de7bcbb844.gif"/> | <img width="150px" src="https://s4.ezgif.com/tmp/ezgif-4-e0344b0243.gif"/> | <img width="150px" src="https://s4.ezgif.com/tmp/ezgif-4-23b8a148bf.gif"/> |
-|:-------------:|:---------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------:|      
+| <img width="200" src="https://github.com/user-attachments/assets/1ef5efbc-0aeb-4672-b7f2-d8f516ad5290"/> | <img width="200" src="https://github.com/user-attachments/assets/81facbe2-de9c-48a5-9976-dce6d5bf5964"/> | <img width="200" src="https://github.com/user-attachments/assets/3adedb4c-dbb1-4289-8e12-a429c10037dc"/> |<img width="200" src="https://github.com/user-attachments/assets/ede0fc7e-9c7e-4662-8903-ee8e859ffa00"/> |
+|:-------------------------:|:-------------------------:|:-------------------------:| :-------------------------:|  
 |       **`메인화면 / 다회용기 반납`**                                |                                                              **`다회용기 대여`**                                                              |                                                              **`포인트 히스토리`**                                                              |                                                              **`마이페이지`**                                                              |
                       
 
