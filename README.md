@@ -44,7 +44,7 @@
 ## 기술적 고민
 ### [🔗 프로젝트 XML 뷰 -> Compose 마이그레이션 과정](https://www.notion.so/ss99x2002/XML-Compose-1765e65acf338081bc46e417b3091c56)
 ### [🔗 UseCase, Mapper로 도메인 활용하기](https://www.notion.so/ss99x2002/UseCase-Mapper-1765e65acf3380b1b4a3d0725c99157f)
-### [🔗 Moshi를 이용해 Json 데이터 잘 활용해보자](https://www.notion.so/ss99x2002/Moshi-Json-1765e65acf3380228c24dad3a455228c)
+### [🔗 QR 데이터 스캔 방식 개선 : Moshi 직렬화/역직렬화 잘 활용해보자](https://www.notion.so/ss99x2002/Moshi-Json-1765e65acf3380228c24dad3a455228c)
 ### [🔗 Version Catalog 적용](https://hyeonlog-developer.tistory.com/210)
 
 <div id="5"></div>
